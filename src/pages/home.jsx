@@ -1,20 +1,21 @@
 import React from 'react';
-import Navbar from './components/navbar';
-import About from './components/about';
-import Feature from './components/feature';
-import ScreenShot from './components/screenshot';
-import Team from './components/team';
-import Blog from './components/blog';
-import Price from './components/price';
-import Testimonial from './components/testimonial';
-import Contact from './components/contact';
-import Subscribe from './components/subscribe';
-import Footer from './components/footer';
 import ModalVideo from 'react-modal-video';
 import 'react-modal-video/scss/modal-video.scss';
 import Tilt from 'react-tilt';
+import About from '../components/about';
+import Blog from '../components/blog';
+import Contact from '../components/contact';
+import Feature from '../components/feature';
+import Footer from '../components/footer';
+import Navbar from '../components/navbar';
+import Price from '../components/price';
+import ScreenShot from '../components/screenshot';
+import Subscribe from '../components/subscribe';
+import Team from '../components/team';
+import Testimonial from '../components/testimonial';
 
-class HomeTwo extends React.Component {
+class Home extends React.Component {
+
 	constructor () {
 	    super()
 	    this.state = {
@@ -26,34 +27,34 @@ class HomeTwo extends React.Component {
 	openModal () {
 	    this.setState({isOpen: true})
 	}
-	
+
 	componentDidMount() {
         setTimeout(function() {
             document.querySelector(".loader-wrapper").style = "display: none";
         }, 2000);
-    }
+	}
 
   render() {
   	document.body.classList.remove('landing-page');
-	document.body.classList.remove('home-style');
-  	document.body.classList.remove('three');
-  	document.body.classList.add('home-style-two');
+	document.body.classList.remove('home-style-two');
+  	document.body.classList.add('home-style');
+  	document.body.classList.add('three');
   	return (
   		<div>
   			{/* Navbar Component*/}
   			<Navbar />
 
   			{/* Home Two Section Start */}
-  			<section id="home"  className="home home-two vertical-scrolling">
+  			<section id="home" className="home home-three vertical-scrolling">
 			   <div className="container">
 			      <div className="row">
 			         <div className="col-md-5 col-sm-12">
 			            <div className="home-contain">
 			               <div className="text-white">
 			                  <div className="contain">
-			                  <img src="assets/images/home2/logo-icon.png" alt="logo" />
+			                  <img src="assets/images/home2/logo-icon.png" alt="" />
 			                  <h4 >Landing page for</h4>
-			                  <h1 className="text-white">t<span className="f-bold ">o</span>v<span className="f-bold ">o</span>
+			                  <h1 className="text-white">t<span className="f-bold">o</span>v<span className="f-bold">o</span>
 			                     <span className="f-bold f-color text-white">app</span>
 			                  </h1>
 			                  <p className="slide-cap-desc">Enhance your business ideas with Powerful, Responsive, Elegant TOVO Theme.</p>
@@ -62,9 +63,9 @@ class HomeTwo extends React.Component {
 			                  </div>
 			                  <div className="play-button">
 			                  	<ModalVideo channel='vimeo' isOpen={this.state.isOpen} videoId='54298665' height={600} width={800} onClose={() => this.setState({isOpen: false})} />
-			                  	 <a className="popup-vimeo animated-circle" >
-			                  		<img src="assets/images/home2/play-button.png" alt="play-button" onClick={this.openModal} className="img-fluid" />
-			                     </a>
+			                  	<a className="popup-vimeo animated-circle" >
+			                     <img src="assets/images/home2/play-button.png" alt="play-button" onClick={this.openModal} className="img-fluid" />
+			                    </a>
 			                  </div>
 			               </div>
 			            </div>
@@ -72,7 +73,7 @@ class HomeTwo extends React.Component {
 			         <div className="col-sm-7">
 			            <div className="home-right">
 			            	<Tilt options={{ perspective: 110, speed: 400, max: 1.2, scale:1 }}>
-			               		<img data-tilt data-tilt-perspective="110" data-tilt-speed="400" data-tilt-max="1.2" src="assets/images/home2/slider-caption.png" className="img-fluid" alt="slider-caption" />
+			               		<img src="assets/images/home3/home-3-img.png" className="img-fluid" alt="slider-caption" />
 			               	</Tilt>
 			            </div>
 			         </div>
@@ -98,10 +99,10 @@ class HomeTwo extends React.Component {
 
 			{/*Price Component*/}
 			<Price />
-			
+
 			{/*Testimonial Component*/}
 			<Testimonial />
-			
+
 			{/*Contact Component*/}
 			<Contact />
 
@@ -115,4 +116,4 @@ class HomeTwo extends React.Component {
   }
 }
 
-export default HomeTwo;
+export default Home;
