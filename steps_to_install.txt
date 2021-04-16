@@ -1,4 +1,5 @@
 - delete node_modules and package-lock.json
 - launch powershell in admin mode.
-- run : npm install --global windows-build-tools
-- run : npm install --legacy-peer-deps
+- run: npm install --global windows-build-tools
+- run: npm install --legacy-peer-deps
+- run: npm update --legacy-peer-deps
