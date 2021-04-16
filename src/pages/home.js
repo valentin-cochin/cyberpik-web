@@ -1,20 +1,20 @@
 import React from 'react';
-import Navbar from './components/navbar';
-import About from './components/about';
-import Feature from './components/feature';
-import ScreenShot from './components/screenshot';
-import Team from './components/team';
-import Blog from './components/blog';
-import Price from './components/price';
-import Testimonial from './components/testimonial';
-import Contact from './components/contact';
-import Subscribe from './components/subscribe';
-import Footer from './components/footer';
 import ModalVideo from 'react-modal-video';
-import Tilt from 'react-tilt';
 import 'react-modal-video/scss/modal-video.scss';
+import Tilt from 'react-tilt';
+import About from '../components/about';
+import Blog from '../components/blog';
+import Contact from '../components/contact';
+import Feature from '../components/feature';
+import Footer from '../components/footer';
+import Navbar from '../components/navbar';
+import Price from '../components/price';
+import ScreenShot from '../components/screenshot';
+import Subscribe from '../components/subscribe';
+import Team from '../components/team';
+import Testimonial from '../components/testimonial';
 
-class HomeThree extends React.Component {
+class Home extends React.Component {
 
 	constructor () {
 	    super()
@@ -116,4 +116,4 @@ class HomeThree extends React.Component {
   }
 }
 
-export default HomeThree;
+export default Home;

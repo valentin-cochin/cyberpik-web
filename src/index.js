@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import HomeThree from './home-three';
 import './index.scss';
 import { default as NoMatch, default as PageNotFound } from './pages/404';
 import Faq from './pages/faq';
 import ForgetPassword from './pages/forget-pwd';
+import Home from './pages/home';
 import Review from './pages/review';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
@@ -17,7 +17,7 @@ class Root extends React.Component {
   	return(
   		<BrowserRouter basename={'/'} >
 		  	<Switch>
-			  <Route exact path={`${process.env.PUBLIC_URL}/`} component={HomeThree}/>
+			  <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home}/>
 			  <Route path={`${process.env.PUBLIC_URL}/sign-in`} component={SignIn}/>
 			  <Route path={`${process.env.PUBLIC_URL}/sign-up`} component={SignUp}/>
 			  <Route path={`${process.env.PUBLIC_URL}/forget-password`} component={ForgetPassword}/>
