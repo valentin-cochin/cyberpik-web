@@ -1,8 +1,8 @@
 {
-  "name": "tovo-react",
+  "name": "cyberpik-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://react.pixelstrap.com/tovo/",
+  "homepage": "not yet",
   "basename": "/",
   "dependencies": {
     "autoprefixer": "7.1.6",
