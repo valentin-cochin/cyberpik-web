@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.scss';
-import { default as NoMatch, default as PageNotFound } from './pages/404';
+import { default as NoMatch } from './pages/404';
 import Faq from './pages/faq';
 import ForgetPassword from './pages/forget-pwd';
 import Home from './pages/home';
@@ -23,7 +23,6 @@ class Root extends React.Component {
 			  <Route path={`${process.env.PUBLIC_URL}/forget-password`} component={ForgetPassword}/>
 			  <Route path={`${process.env.PUBLIC_URL}/thank-you`} component={ThankYou}/>
 			  <Route path={`${process.env.PUBLIC_URL}/review`} component={Review}/>
-			  <Route path={`${process.env.PUBLIC_URL}/404`} component={PageNotFound}/>
 			  <Route path={`${process.env.PUBLIC_URL}/faq`} component={Faq}/>
 			  <Route component={NoMatch} />
 			</Switch>
