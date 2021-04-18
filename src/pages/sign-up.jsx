@@ -1,5 +1,5 @@
 import React from 'react';
-import formik from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup'
 
 
@@ -29,45 +29,53 @@ const SignUp = () => {
             <h2 className="title text-center">It's Free<span> Join US</span></h2>
             <p className="text-center">Welcome to <span>CYBERPIK</span>, Please join us with your personal account information.</p>
             <div className="card">
-               <formik initialValues={initialValues}
+               <Formik initialValues={initialValues}
                   onSubmit={handleSubmit}
                   validationSchema={validationSchema}>
-                  <form className="theme-form">
+                  <Form className="theme-form">
                      <div className="form-group">
-                        <div className="md-fgrup-margin">
-                           <input type="text" className="form-control" placeholder="UserName" required="required" />
-                        </div>
+                        <Field type="text" name="username" className="form-control" placeholder="Username" required="required" />
+                        <ErrorMessage componant="small" name="username" className="ml-2" />
                      </div>
                      <div className="form-group">
-                        <input type="email" className="form-control" placeholder="Email Address" required="required" />
+                        <Field type="email" name="email" className="form-control" placeholder="Email Address" required="required" />
+                        <ErrorMessage componant="small" name="email" className="ml-2" />
+
                      </div>
                      <div className="form-group">
-                        <input required="" type="password" className="form-control" placeholder="Password" />
+                        <Field type="password" name="password" className="form-control" placeholder="Password" required="required" />
                         <div className="show-hide">
                            <span className="show"></span>
                         </div>
+                        <ErrorMessage componant="small" name="password" className="ml-2" />
                      </div>
                      <div className="form-group">
-                        <input type="password" name="login[password]" className="form-control" placeholder="Confirm Password" required="required" />
+                        <Field type="password" name="confirm_password" className="form-control" placeholder="Confirm Password" required="required" />
                         <div className="show-hide">
                            <span className="show"></span>
                         </div>
+                        <ErrorMessage componant="small" name="confirm_password" className="ml-2" />
+
                      </div>
                      <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Country" required="required" />
+                        <Field type="text" name="country" className="form-control" placeholder="Country" />
+                        <ErrorMessage componant="small" name="country" className="ml-2" />
                      </div>
                      <div className="form-group">
-                        <input type="text" className="form-control" placeholder="City" required="required" />
+                        <Field type="text" name="city" className="form-control" placeholder="City" />
+                        <ErrorMessage componant="small" name="city" className="ml-2" />
                      </div>
                      <div className="form-group row">
                         <div className="custom-control custom-checkbox">
-                           <input type="checkbox" className="custom-control-input" id="newsletter" />
+                           <Field type="checkbox" name="newsletter" className="custom-control-input" id="newsletter" />
+                           <ErrorMessage componant="small" name="newsletter" className="ml-2" />
                            <label className="custom-control-label" for="newsletter">Subscribe to the Newsletter</label>
                         </div>
                      </div>
                      <div className="form-group row">
                         <div className="custom-control custom-checkbox">
-                           <input type="checkbox" className="custom-control-input" id="conditions" />
+                           <Field type="checkbox" name="conditions" className="custom-control-input" id="conditions" />
+                           <ErrorMessage componant="small" name="conditions" className="ml-2" />
                            <label className="custom-control-label" for="conditions"><a href={`${process.env.PUBLIC_URL}/ //TODO : Link to the conditions page`}
                               className="text-right theme-link">Accept the Conditions</a></label>
                         </div>
@@ -81,8 +89,8 @@ const SignUp = () => {
                         <button type="submit" className="btn btn-custom fb">Facebook</button>
                         <button type="submit" className="btn btn-custom ggl">Google</button>
                      </div>
-                  </form>
-               </formik>
+                  </Form>
+               </Formik>
             </div>
          </div>
       </section>
