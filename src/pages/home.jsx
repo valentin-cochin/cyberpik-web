@@ -2,17 +2,9 @@ import React from 'react';
 import ModalVideo from 'react-modal-video';
 import 'react-modal-video/scss/modal-video.scss';
 import Tilt from 'react-tilt';
-import About from '../components/about';
-import Blog from '../components/blog';
-import Contact from '../components/contact';
-import Feature from '../components/feature';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar';
-import Price from '../components/price';
-import ScreenShot from '../components/screenshot';
 import Subscribe from '../components/subscribe';
-import Team from '../components/team';
-import Testimonial from '../components/testimonial';
 
 class Home extends React.Component {
 
@@ -44,7 +36,7 @@ class Home extends React.Component {
   			{/* Navbar Component*/}
   			<Navbar />
 
-  			{/* Home Two Section Start */}
+  			{/* Home Section Start */}
   			<section id="home" className="home home-three vertical-scrolling">
 			   <div className="container">
 			      <div className="row">
@@ -80,31 +72,7 @@ class Home extends React.Component {
 			      </div>
 			   </div>
 			</section>
-			{/* Home Two Section End */}
-
-			{/* About Component*/}
-			<About />
-
-			{/*Feature Component*/}
-			<Feature />
-
-			{/*ScreenShot Component*/}
-			<ScreenShot />
-
-			{/*Team Component*/}
-			<Team />
-
-			{/*Blog Component*/}
-			<Blog />
-
-			{/*Price Component*/}
-			<Price />
-
-			{/*Testimonial Component*/}
-			<Testimonial />
-
-			{/*Contact Component*/}
-			<Contact />
+			{/* Home Section End */}
 
 			{/*Subscription Component*/}
 			<Subscribe />
