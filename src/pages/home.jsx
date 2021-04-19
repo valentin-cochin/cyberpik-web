@@ -60,7 +60,7 @@ class Home extends React.Component {
                      <div className="col-sm-7">
                         <div className="home-right">
                             <Tilt options={{ perspective: 110, speed: 400, max: 1.2, scale:1 }}>
-                                   <img src="assets/images/home3/home-3-img.png" className="img-fluid" alt="slider-caption" />
+                                   <img src="assets/images/preview_transfo.jpg" className="img-fluid" alt="slider-caption" />
                                </Tilt>
                         </div>
                      </div>
