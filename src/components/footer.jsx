@@ -30,15 +30,7 @@ class Footer extends React.Component {
                                    <img src="assets/images/locate.png" alt="locate" />
                                 </div>
                                 <div className="footer-address">
-                                   <a href={null}>B-17 ABC Center,  Near Temple, USA  123456</a>
-                                </div>
-                             </li>
-                             <li>
-                                <div className="footer-icon">
-                                   <img src="assets/images/telephone.png" alt="telephone" />
-                                </div>
-                                <div className="footer-address">
-                                    <a href={null}>122-456-7890  /  124-789-5690</a>
+                                   <a href={null}>20 Rue du Luxembourg, 59100 Roubaix, France</a>
                                 </div>
                              </li>
                              <li>
@@ -46,15 +38,7 @@ class Footer extends React.Component {
                                    <img src="assets/images/fotter-email.png" alt="fotter-email" />
                                 </div>
                                 <div className="footer-address">
-                                    <a href={null}>support@compnay.com</a>
-                                </div>
-                             </li>
-                             <li>
-                                <div className="footer-icon">
-                                   <img src="assets/images/fax.png" alt="" />
-                                </div>
-                                <div className="footer-address">
-                                    <a href={null}>123-456  /  456-789</a>
+                                    <a href={null}>support@cyberpik.com</a>
                                 </div>
                              </li>
                           </ul>
@@ -62,7 +46,7 @@ class Footer extends React.Component {
                     </div>
                  </div>
                  <div className="col-md-6 p-0">
-                    <iframe title="google-map" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d35391.48685150366!2d72.77537852898678!3d21.18930639680146!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1530610361925" allowFullScreen className="md-height"></iframe>
+                    <iframe title="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d631.8596552888489!2d3.1593013370550493!3d50.69324454464169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c328e2f9dd32f5%3A0x3b33b05842792807!2sAFPA!5e0!3m2!1sfr!2sfr!4v1618819751390!5m2!1sfr!2sfr" allowfullscreen className="md-height"></iframe>
                  </div>
               </div>
            </div>
@@ -83,8 +67,8 @@ class Footer extends React.Component {
           <div className="fb-customerchat"
               page_id="2123438804574660"
               theme_color="#18e7d3"
-              logged_in_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?"
-              logged_out_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?">
+              logged_in_greeting="Hi! Welcome to Cyberpik. How can we help you?"
+              logged_out_greeting="Hi! Welcome to Cyberpik. How can we help you?">
           </div>
       </div>
   	);

@@ -48,8 +48,6 @@ class Home extends React.Component {
 			                     <span className="f-bold f-color text-white">app</span>
 			                  </h1>
 			                  <p className="slide-cap-desc">Enhance your business ideas with Powerful, Responsive, Elegant TOVO Theme.</p>
-			                  <a href={null}><img src="assets/images/appstore.png" alt="appstore" className="store" /></a>
-			                  <a href={null}><img className="ml-10 store" src="assets/images/play-store.png" alt="play-store" /></a>
 			                  </div>
 			                  <div className="play-button">
 			                  	<ModalVideo channel='vimeo' isOpen={this.state.isOpen} videoId='54298665' height={600} width={800} onClose={() => this.setState({isOpen: false})} />
