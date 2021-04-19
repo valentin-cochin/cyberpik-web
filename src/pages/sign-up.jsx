@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as yup from 'yup'
 import axios from 'axios';
+import * as yup from 'yup';
 
 
 const SignUp = () => {
@@ -14,8 +14,15 @@ const SignUp = () => {
       enableNewsletter: false
    }
 
+   const yup = require('yup')
+   require('yup-password')(yup)
    const validationSchema = yup.object().shape({
-      //TODO : Set the validationSchema
+      username: yup.string().required("username is required").min(3, "username must be at least 3 characters").max(20, "username must be at least 21 characters"),
+      email: yup.string().required("e-mail is required").email("e-mail is not valid"),
+      password: yup.string().required("password is required").password(),
+      confirm_password: yup.string().required("confirmation password is required").oneOf([yup.ref("password"), null], "passwords must be the same"),
+      enableNewsletter: yup.bool().notRequired(),
+      conditions: yup.bool().test("consent", "you have to accept our terms and conditions", value => value === true).required("you have to accept our terms and conditions")
    })
 
    const submit = (values) => {
@@ -46,15 +53,14 @@ const SignUp = () => {
                <Formik initialValues={initialValues}
                   onSubmit={submit}
                   validationSchema={validationSchema}>
-                {({ handleChange }) => (
                   <Form className="theme-form">
                      <div className="form-group">
                         <Field type="text" name="username" className="form-control" placeholder="Username" required="required" />
-                        <ErrorMessage componant="small" name="username" className="ml-2" />
+                        <ErrorMessage componant="small" name="username" className="ml-5" />
                      </div>
                      <div className="form-group">
                         <Field type="email" name="email" className="form-control" placeholder="Email Address" required="required" />
-                        <ErrorMessage componant="small" name="email" className="ml-2" />
+                        <ErrorMessage componant="small" name="email" className="ml-5" />
 
                      </div>
                      <div className="form-group">
@@ -62,35 +68,34 @@ const SignUp = () => {
                         <div className="show-hide">
                            <span className="show"></span>
                         </div>
-                        <ErrorMessage componant="small" name="password" className="ml-2" />
+                        <ErrorMessage componant="small" name="password" className="ml-5" />
                      </div>
                      <div className="form-group">
-                        <Field type="password" name="confirm_password" className="form-control" placeholder="Confirm Password" required="required" />
+                        <Field type="password" name="confirm_password" className="form-control" placeholder="Confirmation Password" required="required" />
                         <div className="show-hide">
                            <span className="show"></span>
                         </div>
-                        <ErrorMessage componant="small" name="confirm_password" className="ml-2" />
+                        <ErrorMessage componant="small" name="confirm_password" className="ml-5" />
                      </div>
                      <div className="form-group row">
                         <div className="custom-control custom-checkbox">
-                           <Field type="checkbox" name="enableNewsletter" className="custom-control-input" id="newsletter" onChange={handleChange} />
-                           <ErrorMessage componant="small" name="newsletter" className="ml-2" />
+                           <Field type="checkbox" name="enableNewsletter" className="custom-control-input" id="newsletter" />
                            <label className="custom-control-label" for="newsletter">Subscribe to the Newsletter</label>
+                           <ErrorMessage componant="small" name="newsletter" className="ml-5" />
                         </div>
                      </div>
                      <div className="form-group row">
                         <div className="custom-control custom-checkbox">
-                           <Field type="checkbox" name="conditions" className="custom-control-input" id="conditions" onChange={handleChange} />
-                           <ErrorMessage componant="small" name="conditions" className="ml-2" />
+                           <Field type="checkbox" name="conditions" className="custom-control-input" id="conditions" />
                            <label className="custom-control-label" for="conditions"><a//TODO : Link to the conditions page(modal?)
-                              className="text-right theme-link">Accept Terms & Conditions</a></label>
+                              className="text-right theme-link">Accept Terms & Conditions</a></label><br/>
+                              <ErrorMessage componant="small" name="conditions" className="ml-5" />
                         </div>
                      </div>
                      <div className="form-button text-center">
                         <button type="submit" className="btn btn-custom theme-color">Sign Up</button>
                      </div>
                   </Form>
-                )}
                </Formik>
                <div className="or-saparator"><span>or</span></div>
                <h6 className="text-center mt-0 mb-3">Sign up with:</h6>
