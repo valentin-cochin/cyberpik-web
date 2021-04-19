@@ -16,8 +16,8 @@ class Subscribe extends React.Component {
                   <div className="col-md-8 offset-md-2">
                      <div className="footer-text">
                         <img src="assets/images/email.png" alt="email" />
-                        <h2 className="title text-center md-margin-top">subscribe to <span>newsletter</span></h2>
-                        <p>  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                        <h2 className="title text-center md-margin-top">subscribe to our <span>newsletter</span></h2>
+                        <p>Receive our latest news and be the first to be notified of our new features. You can unsuscribe anytime you want.</p>
                         <form action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda" className="footer-form needs-validation" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
                            <div className="form-group">
                               <input type="email" className="form-control" placeholder="enter your email" name="EMAIL" id="mce-EMAIL" required="required" />

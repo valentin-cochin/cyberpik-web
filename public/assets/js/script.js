@@ -21,7 +21,7 @@ $(document).ready(function(){
         $('.show-hide').parent().find('input[name="login[password]"]').attr('type','password');
     });
 
-    
+
     /*----------------------------------------
      Pre Loader
      ----------------------------------------*/
@@ -53,7 +53,7 @@ $(document).ready(function(){
     		console.log('click');
     		$(".navbar-collapse").collapse('hide');
     	}
-            
+
         });
     }
 

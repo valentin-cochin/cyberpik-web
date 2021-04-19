@@ -2,17 +2,9 @@ import React from 'react';
 import ModalVideo from 'react-modal-video';
 import 'react-modal-video/scss/modal-video.scss';
 import Tilt from 'react-tilt';
-import About from '../components/about';
-import Blog from '../components/blog';
-import Contact from '../components/contact';
-import Feature from '../components/feature';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar';
-import Price from '../components/price';
-import ScreenShot from '../components/screenshot';
 import Subscribe from '../components/subscribe';
-import Team from '../components/team';
-import Testimonial from '../components/testimonial';
 
 class Home extends React.Component {
 
@@ -35,8 +27,6 @@ class Home extends React.Component {
 	}
 
   render() {
-  	document.body.classList.remove('landing-page');
-	document.body.classList.remove('home-style-two');
   	document.body.classList.add('home-style');
   	document.body.classList.add('three');
   	return (
@@ -44,7 +34,7 @@ class Home extends React.Component {
   			{/* Navbar Component*/}
   			<Navbar />
 
-  			{/* Home Two Section Start */}
+  			{/* Home Section Start */}
   			<section id="home" className="home home-three vertical-scrolling">
 			   <div className="container">
 			      <div className="row">
@@ -58,8 +48,6 @@ class Home extends React.Component {
 			                     <span className="f-bold f-color text-white">app</span>
 			                  </h1>
 			                  <p className="slide-cap-desc">Enhance your business ideas with Powerful, Responsive, Elegant TOVO Theme.</p>
-			                  <a href={null}><img src="assets/images/appstore.png" alt="appstore" className="store" /></a>
-			                  <a href={null}><img className="ml-10 store" src="assets/images/play-store.png" alt="play-store" /></a>
 			                  </div>
 			                  <div className="play-button">
 			                  	<ModalVideo channel='vimeo' isOpen={this.state.isOpen} videoId='54298665' height={600} width={800} onClose={() => this.setState({isOpen: false})} />
@@ -80,31 +68,7 @@ class Home extends React.Component {
 			      </div>
 			   </div>
 			</section>
-			{/* Home Two Section End */}
-
-			{/* About Component*/}
-			<About />
-
-			{/*Feature Component*/}
-			<Feature />
-
-			{/*ScreenShot Component*/}
-			<ScreenShot />
-
-			{/*Team Component*/}
-			<Team />
-
-			{/*Blog Component*/}
-			<Blog />
-
-			{/*Price Component*/}
-			<Price />
-
-			{/*Testimonial Component*/}
-			<Testimonial />
-
-			{/*Contact Component*/}
-			<Contact />
+			{/* Home Section End */}
 
 			{/*Subscription Component*/}
 			<Subscribe />
