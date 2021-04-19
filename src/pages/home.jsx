@@ -27,8 +27,6 @@ class Home extends React.Component {
 	}
 
   render() {
-  	document.body.classList.remove('landing-page');
-	document.body.classList.remove('home-style-two');
   	document.body.classList.add('home-style');
   	document.body.classList.add('three');
   	return (
