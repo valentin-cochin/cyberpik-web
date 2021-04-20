@@ -14,9 +14,10 @@ import { TermsConditions } from '../components/user_accounts/terms-conditions';
 import { HOME_PAGE, SIGN_IN, USER_ACCOUNT_BACK_URL } from '../../config/url-constants'
 
 
-const SignUp = () => {
-   const history = useHistory()
 
+const SignUp = () => {
+
+   const history = useHistory()
    const submit = (values) => {
       axios.post(USER_ACCOUNT_BACK_URL, {
          userName: values.username,
@@ -24,10 +25,11 @@ const SignUp = () => {
          password: values.password,
          enableNewsletter: values.enableNewsletter
       }).then(res => {
-         console.log(res.data);
          history.push(HOME_PAGE);
-     })
-     .catch(err => console.log(err))
+      }).catch(
+         (err) => {
+            document.getElementById("error_message_sign_up").innerHTML = err.response.data
+         })
    }
 
    return (
@@ -52,12 +54,13 @@ const SignUp = () => {
                      <ConfirmPassword />
                      <EnableNewsletter />
                      <TermsConditions />
+                     <div id="error_message_sign_up" className="text-center mt-0 mb-3"></div>
                      <div className="form-button text-center">
                         <button type="submit" className="btn btn-custom theme-color">Sign Up</button>
                      </div>
-                     <br/>
+                     <br />
                      <div className="form-button text-center">
-                     <button className="btn btn-custom theme-color"><Link className="text-white" to={SIGN_IN}>Already have an account</Link></button>
+                        <button className="btn btn-custom theme-color"><Link className="text-white" to={SIGN_IN}>Already have an account</Link></button>
                      </div>
                   </Form>
                </Formik>
