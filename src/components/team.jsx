@@ -9,8 +9,10 @@ class Team extends React.Component {
       }, 2000);
    }
    render() {
-      // OwlCarousel Option for Team Members
+      // OwlCarousel Options
       const options = {
+         loop: false,
+         rewind: true,
          0: {
             items: 1,
             margin: 5,
@@ -23,31 +25,26 @@ class Team extends React.Component {
             items: 2,
          },
          992: {
-            items: 3,
+            items: 2,
          },
          1000: {
-            items: 3,
+            items: 2,
          }
       };
 
-      // Dynamic Team Members Easy to Update
       let data = [
-         { name: 'mark jkcno', designation: 'designer', photo: '1.jpg', facebook: '#', google: '#', twitter: '#', instagram: '#', rss: '#' },
-         { name: 'john doe', designation: 'devloper', photo: '15.jpg', facebook: '#', google: '#', twitter: '#', instagram: '#', rss: '#' },
-         { name: 'johanson let', designation: 'ux designer', photo: '22.jpg', facebook: '#', google: '#', twitter: '#', instagram: '#', rss: '#' },
-         { name: 'Walo Boni', designation: 'app devloper', photo: '1.jpg', facebook: '#', google: '#', twitter: '#', instagram: '#', rss: '#' },
-         { name: 'John Shipmen', designation: 'app designer', photo: '22.jpg', facebook: '#', google: '#', twitter: '#', instagram: '#', rss: '#' },
-         { name: 'Robert Tomkins', designation: 'ceo', photo: '15.jpg', facebook: '#', google: '#', twitter: '#', instagram: '#', rss: '#' },
+         { name: 'Antoine François', designation: 'developer', photo: 'antoine.jpg', linkedin: 'https://www.linkedin.com/in/valentin-cochin/', github: 'https://github.com/valentin-cochin'},
+         { name: 'Valentin Cochin', designation: 'developer', photo: 'valentin.jpg', linkedin: 'https://www.linkedin.com/in/francois-antoine3/', github: 'https://github.com/AntoineFran'}
       ];
 
-      // Dynamic Team Members Data Loop
+      // Data Loop
       let DataList = data.map((val, i) => {
          return (
             <div className="team-item" key={i}>
                <div className="team-block">
                   <div className="team-box">
                      <div className="team-avtar">
-                        <img src={`assets/images/avtar/${val.photo}`} alt="" />
+                        <img src={`assets/images/avatar/${val.photo}`} alt="" />
                      </div>
                      <div className="team-text">
                         <h3>{val.name}</h3>
@@ -55,11 +52,8 @@ class Team extends React.Component {
                      </div>
                      <div className="overlay">
                         <ul className="team-social">
-                           <li><a href={val.facebook}><i className="fa fa-facebook"></i></a></li>
-                           <li><a href={val.google}><i className="fa fa-google-plus"></i></a></li>
-                           <li><a href={val.twitter}><i className="fa fa-twitter"></i></a></li>
-                           <li><a href={val.instagram}><i className="fa fa-instagram"></i></a></li>
-                           <li><a href={val.rss}><i className="fa fa-rss"></i></a></li>
+                           <li><a href={val.linkedin} target="_blank"><i className="fa fa-linkedin"></i></a></li>
+                           <li><a href={val.github} target="_blank"><i className="fa fa-github"></i></a></li>
                         </ul>
                      </div>
                   </div>
@@ -78,7 +72,7 @@ class Team extends React.Component {
             <div className="container">
                <div className="row ">
                   <div className="col-sm-12">
-                     <h2 className="title">our <span>smart team</span></h2>
+                     <h2 className="title">our <span>team</span></h2>
                   </div>
                   <div className="col-sm-12">
                      <div>
