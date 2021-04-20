@@ -11,19 +11,20 @@ import SignUp from './pages/sign-up';
 import ThankYou from './pages/thank-you';
 import GeneralConditions from './pages/general-conditions';
 import registerServiceWorker from './registerServiceWorker';
+import { FORGET_PASSWORD, GENERAL_CONDITIONS, HOME_PAGE, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP, THANK_YOU } from '../config/url-constants';
 
 class Root extends React.Component {
   render() {
   	return(
   		<BrowserRouter basename={'/'} >
 		  	<Switch>
-			  <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home}/>
-			  <Route path={`${process.env.PUBLIC_URL}/sign-in`} component={SignIn}/>
-			  <Route path={`${process.env.PUBLIC_URL}/sign-up`} component={SignUp}/>
-			  <Route path={`${process.env.PUBLIC_URL}/forget-password`} component={ForgetPassword}/>
-			  <Route path={`${process.env.PUBLIC_URL}/project-presentation`} component={ProjectPresentation}/>
-			  <Route path={`${process.env.PUBLIC_URL}/thank-you`} component={ThankYou}/>
-			  <Route path={`${process.env.PUBLIC_URL}/general-conditions`} component={GeneralConditions}/>
+			  <Route exact path={`${process.env.PUBLIC_URL}${HOME_PAGE}`} component={Home}/>
+			  <Route path={`${process.env.PUBLIC_URL}${SIGN_IN}`} component={SignIn}/>
+			  <Route path={`${process.env.PUBLIC_URL}${SIGN_UP}`} component={SignUp}/>
+			  <Route path={`${process.env.PUBLIC_URL}${FORGET_PASSWORD}`} component={ForgetPassword}/>
+			  <Route path={`${process.env.PUBLIC_URL}${PROJECT_PRESENTATION}`} component={ProjectPresentation}/>
+			  <Route path={`${process.env.PUBLIC_URL}${THANK_YOU}`} component={ThankYou}/>
+			  <Route path={`${process.env.PUBLIC_URL}${GENERAL_CONDITIONS}`} component={GeneralConditions}/>
 			  <Route component={NoMatch} />
 			</Switch>
 		</BrowserRouter>
