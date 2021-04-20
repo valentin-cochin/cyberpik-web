@@ -8,6 +8,8 @@ import Home from './pages/home';
 import ProjectPresentation from './pages/project-presentation';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
+import ThankYou from './pages/thank-you';
+import GeneralConditions from './pages/general-conditions';
 import registerServiceWorker from './registerServiceWorker';
 
 class Root extends React.Component {
@@ -20,6 +22,8 @@ class Root extends React.Component {
 			  <Route path={`${process.env.PUBLIC_URL}/sign-up`} component={SignUp}/>
 			  <Route path={`${process.env.PUBLIC_URL}/forget-password`} component={ForgetPassword}/>
 			  <Route path={`${process.env.PUBLIC_URL}/project-presentation`} component={ProjectPresentation}/>
+			  <Route path={`${process.env.PUBLIC_URL}/thank-you`} component={ThankYou}/>
+			  <Route path={`${process.env.PUBLIC_URL}/general-conditions`} component={GeneralConditions}/>
 			  <Route component={NoMatch} />
 			</Switch>
 		</BrowserRouter>
