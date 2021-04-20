@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { Formik, Form } from 'formik';
 import { signUpInitialValues } from '../shared/initialValues'
 import { signUpValidationSchema } from '../shared/validationSchemas';
 import { UserName } from '../components/user_accounts/username';
@@ -9,18 +11,25 @@ import { Password } from '../components/user_accounts/password';
 import { ConfirmPassword } from '../components/user_accounts/confirm-password';
 import { EnableNewsletter } from '../components/user_accounts/enable-newsletter';
 import { TermsConditions } from '../components/user_accounts/terms-conditions';
-import { BACK_END_URL, USER_ACCOUNT_URL } from '../../config/api-user-paths'
+import { HOME_PAGE, SIGN_IN, USER_ACCOUNT_BACK_URL } from '../../config/url-constants'
+
 
 
 const SignUp = () => {
 
+   const history = useHistory()
    const submit = (values) => {
-      axios.post(BACK_END_URL + USER_ACCOUNT_URL, {
+      axios.post(USER_ACCOUNT_BACK_URL, {
          userName: values.username,
          email: values.email,
          password: values.password,
          enableNewsletter: values.enableNewsletter
-      })
+      }).then(res => {
+         history.push(HOME_PAGE);
+      }).catch(
+         (err) => {
+            document.getElementById("error_message_sign_up").innerHTML = err.response.data
+         })
    }
 
    return (
@@ -45,8 +54,13 @@ const SignUp = () => {
                      <ConfirmPassword />
                      <EnableNewsletter />
                      <TermsConditions />
+                     <div id="error_message_sign_up" className="text-center mt-0 mb-3"></div>
                      <div className="form-button text-center">
                         <button type="submit" className="btn btn-custom theme-color">Sign Up</button>
+                     </div>
+                     <br />
+                     <div className="form-button text-center">
+                        <button className="btn btn-custom theme-color"><Link className="text-white" to={SIGN_IN}>Already have an account</Link></button>
                      </div>
                   </Form>
                </Formik>
