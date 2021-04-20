@@ -9,7 +9,7 @@ export const ConfirmPassword = () => {
             <div className="show-hide">
                 <span className="show"></span>
             </div>
-            <ErrorMessage componant="small" name="confirm_password" className="ml-5" />
+            <ErrorMessage componant="small" name="confirm_password" className="ml-5 mt-0 mb-3" />
         </div>
     )
 }
