@@ -11,23 +11,26 @@ import { Password } from '../components/user_accounts/password';
 import { ConfirmPassword } from '../components/user_accounts/confirm-password';
 import { EnableNewsletter } from '../components/user_accounts/enable-newsletter';
 import { TermsConditions } from '../components/user_accounts/terms-conditions';
-import { HOME_PAGE, SIGN_IN, USER_ACCOUNT_BACK_URL } from '../../config/url-constants'
+import { HOME_PAGE, SIGN_IN, BACK_END_SIGN_UP } from '../../config/url-constants'
 
 
 
 const SignUp = () => {
 
+   setTimeout(function () {
+      document.querySelector(".loader-wrapper").style = "display: none";
+   }, 2000);
+
    const history = useHistory()
    const submit = (values) => {
-      axios.post(USER_ACCOUNT_BACK_URL, {
+      axios.post(BACK_END_SIGN_UP, {
          userName: values.username,
          email: values.email,
          password: values.password,
          enableNewsletter: values.enableNewsletter
       }).then(res => {
          history.push(HOME_PAGE);
-      }).catch(
-         (err) => {
+      }).catch(err => {
             document.getElementById("error_message_sign_up").innerHTML = err.response.data
          })
    }
@@ -60,7 +63,7 @@ const SignUp = () => {
                      </div>
                      <br />
                      <div className="form-button text-center">
-                        <button className="btn btn-custom theme-color"><Link className="text-white" to={SIGN_IN}>Already have an account</Link></button>
+                        <button className="btn btn-custom theme-color"><Link className="text-white" to={SIGN_IN}>Already have an account?</Link></button>
                      </div>
                   </Form>
                </Formik>
