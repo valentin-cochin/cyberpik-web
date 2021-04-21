@@ -11,3 +11,8 @@ export const signUpValidationSchema = yup.object().shape({
     enableNewsletter: yup.bool().notRequired(),
     conditions: yup.bool().test("consent", "you have to accept our terms and conditions", value => value === true).required("you have to accept our terms and conditions")
 })
+
+export const signInValidationSchema = yup.object().shape({
+    email: yup.string().required("e-mail is required").email("e-mail is not valid"),
+    password: yup.string().required("password is required")
+})

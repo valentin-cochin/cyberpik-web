@@ -2,7 +2,8 @@
 export const BACK_END_URL = 'http://localhost:8080/cyberpik'
 
 // URL to access to the different API User controllers
-export const USER_ACCOUNT_BACK_URL = BACK_END_URL + '/user_accounts'
+export const BACK_END_SIGN_UP = BACK_END_URL + '/user_accounts'
+export const BACK_END_SIGN_IN = BACK_END_URL + '/user_accounts/login'
 
 // URL to navigate between the different front pages
 export const HOME_PAGE = '/'

@@ -6,3 +6,8 @@ export const signUpInitialValues = {
     enableNewsletter: false,
     conditions: false
  }
+
+ export const signInInitialValues = {
+     email: "",
+     password: ""
+ }
