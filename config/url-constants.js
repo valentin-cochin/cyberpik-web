@@ -11,7 +11,7 @@ export const SIGN_IN = '/sign-in'
 export const SIGN_UP = '/sign-up'
 export const FORGET_PASSWORD = '/forget-password'
 export const PROJECT_PRESENTATION = '/project-presentation'
-export const THANK_YOU = '/thank-you'
+export const IMPORT = '/import'
 export const GENERAL_CONDITIONS = '/general-conditions'
 
 // API for countries, states & cities requests URL

@@ -8,10 +8,10 @@ import Home from './pages/home';
 import ProjectPresentation from './pages/project-presentation';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
-import ThankYou from './pages/thank-you';
+import Import from './pages/import';
 import GeneralConditions from './pages/general-conditions';
 import registerServiceWorker from './registerServiceWorker';
-import { FORGET_PASSWORD, GENERAL_CONDITIONS, HOME_PAGE, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP, THANK_YOU } from '../config/url-constants';
+import { FORGET_PASSWORD, GENERAL_CONDITIONS, HOME_PAGE, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP, IMPORT } from '../config/url-constants';
 
 class Root extends React.Component {
   render() {
@@ -23,7 +23,7 @@ class Root extends React.Component {
 			  <Route path={`${process.env.PUBLIC_URL}${SIGN_UP}`} component={SignUp}/>
 			  <Route path={`${process.env.PUBLIC_URL}${FORGET_PASSWORD}`} component={ForgetPassword}/>
 			  <Route path={`${process.env.PUBLIC_URL}${PROJECT_PRESENTATION}`} component={ProjectPresentation}/>
-			  <Route path={`${process.env.PUBLIC_URL}${THANK_YOU}`} component={ThankYou}/>
+			  <Route path={`${process.env.PUBLIC_URL}${IMPORT}`} component={Import}/>
 			  <Route path={`${process.env.PUBLIC_URL}${GENERAL_CONDITIONS}`} component={GeneralConditions}/>
 			  <Route component={NoMatch} />
 			</Switch>
