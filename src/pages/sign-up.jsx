@@ -31,8 +31,8 @@ const SignUp = () => {
       }).then(res => {
          history.push(HOME_PAGE);
       }).catch(err => {
-            document.getElementById("error_message_sign_up").innerHTML = err.response.data
-         })
+         document.getElementById("error_message_sign_up").innerHTML = err.response.data
+      })
    }
 
    return (
@@ -62,11 +62,11 @@ const SignUp = () => {
                         <button type="submit" className="btn btn-custom theme-color">Sign Up</button>
                      </div>
                      <br />
-                     <div className="form-button text-center">
-                        <button className="btn btn-custom theme-color"><Link className="text-white" to={SIGN_IN}>Already have an account?</Link></button>
-                     </div>
                   </Form>
                </Formik>
+               <div className="form-button text-center">
+                  <button className="btn btn-custom theme-color"><Link className="text-white" to={SIGN_IN}>You already have an account?</Link></button>
+               </div>
 
                <div className="or-saparator"><span>or</span></div>
                <h6 className="text-center mt-0 mb-3">Sign up with:</h6>

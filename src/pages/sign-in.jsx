@@ -57,11 +57,11 @@ const SignIn = () => {
                         <button type="submit" className="btn btn-custom btn-lg theme-color">Login</button>
                      </div>
                      <br />
-                     <div className="form-button text-center">
-                        <button className="btn btn-custom theme-color"><Link className="text-white" to={SIGN_UP}>Doesn't have an account yet?</Link></button>
-                     </div>
                   </Form>
                </Formik>
+               <div className="form-button text-center">
+                  <button className="btn btn-custom theme-color"><Link className="text-white" to={SIGN_UP}>You don't have an account yet?</Link></button>
+               </div>
 
                <div className="or-saparator"><span>or</span></div>
                <h6 className="text-center mt-0 mb-3">Sign in with:</h6>
