@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import Dropzone from "react-dropzone";
+import { Link } from 'react-router-dom';
+import { HOME_PAGE } from '../../config/url-constants';
 
 
 const Import = () => {
@@ -17,9 +19,21 @@ const Import = () => {
         backgroundColor: '#eeeeee',
     };
 
-    const [fileNames, setFileNames] = useState([]);
-    const handleDrop = acceptedFiles =>
-        setFileNames(acceptedFiles.map(file => file.name));
+    const onDrop = useCallback((acceptedFiles) => {
+        acceptedFiles.forEach((file) => {
+            const reader = new FileReader()
+
+            reader.onabort = () => console.log('file reading was aborted')
+            reader.onerror = () => console.log('file reading has failed')
+            reader.onload = () => {
+                // Do whatever you want with the file contents
+                const binaryStr = reader.result
+                console.log(binaryStr)
+            }
+            reader.readAsArrayBuffer(file)
+        })
+
+    }, [])
 
     useEffect(() => {
         setTimeout(function () {
@@ -42,7 +56,7 @@ const Import = () => {
                                 <h2>Import your image</h2>
                             </div>
                             <Dropzone
-                                onDrop={handleDrop}
+                                onDrop={onDrop}
                                 accept=".jpeg,.jpg"
                                 maxFiles={1}
                                 minSize={1024}
@@ -68,7 +82,7 @@ const Import = () => {
                                     <p>This app was made with ❤️ by <a href="https://github.com/valentin-cochin" target="_blank" rel="noopener noreferrer">Valentin Cochin</a> and <a href="https://github.com/AntoineFran" target="_blank" rel="noopener noreferrer">Antoine François</a></p>
                                 </div>
                                 <div className="form-button text-center">
-                                    <a href="" className="btn btn-custom btn-lg theme-color btn-back"><i className="fa fa-angle-double-left mr-2"></i>Back to home</a>
+                                    <Link to={HOME_PAGE} className="btn btn-custom btn-lg theme-color btn-back"><i className="fa fa-angle-double-left mr-2"></i>Back to home</Link>
                                 </div>
                             </div>
                         </div>
