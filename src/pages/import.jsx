@@ -15,13 +15,13 @@ const Import = () => {
         borderColor: '#777777',
         borderStyle: 'dashed',
         backgroundColor: '#eeeeee',
-      };
+    };
 
     const [fileNames, setFileNames] = useState([]);
     const handleDrop = acceptedFiles =>
         setFileNames(acceptedFiles.map(file => file.name));
 
-        useEffect(() => {
+    useEffect(() => {
         setTimeout(function () {
             document.querySelector(".loader-wrapper").style = "display: none"
         }, 1200);
@@ -49,7 +49,7 @@ const Import = () => {
                                 maxSize={3072000}
                             >
                                 {({ getRootProps, getInputProps }) => (
-                                    <div {...getRootProps({style})}>
+                                    <div {...getRootProps({ style })}>
                                         <input {...getInputProps()} />
                                         <h3>Drag 'n' drop your image here, or click to select it</h3>
                                     </div>
