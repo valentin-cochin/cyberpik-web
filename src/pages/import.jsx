@@ -52,6 +52,7 @@ const Import = () => {
                                     <div {...getRootProps({ style })}>
                                         <input {...getInputProps()} />
                                         <h3>Drag 'n' drop your image here, or click to select it</h3>
+                                        <em>(Only *.jpeg and *.jpg images will be accepted)</em>
                                     </div>
                                 )}
                             </Dropzone>
@@ -64,7 +65,7 @@ const Import = () => {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="copyright-section">
-                                    <p>2018-19 Copyright &copy; By Themeforest Powered By Pixel Strap</p>
+                                    <p>This app was made with ❤️ by <a href="https://github.com/valentin-cochin" target="_blank" rel="noopener noreferrer">Valentin Cochin</a> and <a href="https://github.com/AntoineFran" target="_blank" rel="noopener noreferrer">Antoine François</a></p>
                                 </div>
                                 <div className="form-button text-center">
                                     <a href="" className="btn btn-custom btn-lg theme-color btn-back"><i className="fa fa-angle-double-left mr-2"></i>Back to home</a>
