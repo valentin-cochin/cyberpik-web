@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useCallback, useEffect } from 'react';
 import Dropzone from "react-dropzone";
 import { Link } from 'react-router-dom';
@@ -19,6 +20,12 @@ const Import = () => {
         backgroundColor: '#eeeeee',
     };
 
+    useEffect(() => {
+        setTimeout(function () {
+            document.querySelector(".loader-wrapper").style = "display: none"
+        }, 1200);
+    })
+
     const onDrop = useCallback((acceptedFiles) => {
         acceptedFiles.forEach((file) => {
             const reader = new FileReader()
@@ -29,17 +36,26 @@ const Import = () => {
                 // Do whatever you want with the file contents
                 const binaryStr = reader.result
                 console.log(binaryStr)
+                upload(binaryStr)
             }
             reader.readAsArrayBuffer(file)
         })
 
     }, [])
 
-    useEffect(() => {
-        setTimeout(function () {
-            document.querySelector(".loader-wrapper").style = "display: none"
-        }, 1200);
-    })
+    const upload = (binaryStr) => {
+        let formData = new FormData();
+        formData.append("file", binaryStr);
+        console.log(formData);
+        axios.post("localhost:8080/image/upload", formData)
+            .then(response => {
+                console.log(response.data);
+                // TODO: Add preview code here
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 
     return (
         <section className="authentication-form download">
