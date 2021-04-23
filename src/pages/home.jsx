@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'react-modal-video/scss/modal-video.scss';
 import { Link } from 'react-router-dom';
 import Tilt from 'react-tilt';

@@ -1,8 +1,8 @@
-import axios from 'axios';
-import React, { useCallback, useEffect } from 'react';
-import Dropzone from "react-dropzone";
-import { Link } from 'react-router-dom';
-import { HOME_PAGE } from '../../config/url-constants';
+import axios from 'axios'
+import React, { useEffect } from 'react'
+import Dropzone from "react-dropzone"
+import { Link } from 'react-router-dom'
+import { HOME_PAGE } from '../../config/url-constants'
 
 
 const Import = () => {
@@ -26,28 +26,37 @@ const Import = () => {
         }, 1200);
     })
 
-    const onDrop = useCallback((acceptedFiles) => {
+    const onDrop = (acceptedFiles) => {
         acceptedFiles.forEach((file) => {
-            const reader = new FileReader()
 
-            reader.onabort = () => console.log('file reading was aborted')
-            reader.onerror = () => console.log('file reading has failed')
-            reader.onload = () => {
-                // Do whatever you want with the file contents
-                const binaryStr = reader.result
-                console.log(binaryStr)
-                upload(binaryStr)
-            }
-            reader.readAsArrayBuffer(file)
+            let formData = new FormData()
+            formData.append("file", file)
+
+            axios.post("http://localhost:8080/image/upload", formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(response => {
+                    console.log(response.data);
+                    // TODO: Add preview code here
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
         })
 
-    }, [])
+    }
 
-    const upload = (binaryStr) => {
-        let formData = new FormData();
-        formData.append("file", binaryStr);
-        console.log(formData);
-        axios.post("localhost:8080/image/upload", formData)
+    const upload = (file) => {
+        let formData = new FormData()
+        formData.append("file", file)
+        console.log(formData)
+        axios.post("localhost:8080/image/upload", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
             .then(response => {
                 console.log(response.data);
                 // TODO: Add preview code here
@@ -111,4 +120,4 @@ const Import = () => {
 }
 
 
-export default Import;
+export default Import
