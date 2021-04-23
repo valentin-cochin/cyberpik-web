@@ -32,7 +32,7 @@ const Import = () => {
             let formData = new FormData()
             formData.append("file", file)
 
-            axios.post("http://localhost:8080/image/upload", formData, {
+            axios.post("http://localhost:8080/images/", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -46,24 +46,6 @@ const Import = () => {
                 })
         })
 
-    }
-
-    const upload = (file) => {
-        let formData = new FormData()
-        formData.append("file", file)
-        console.log(formData)
-        axios.post("localhost:8080/image/upload", formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        })
-            .then(response => {
-                console.log(response.data);
-                // TODO: Add preview code here
-            })
-            .catch((error) => {
-                console.log(error)
-            })
     }
 
     return (
