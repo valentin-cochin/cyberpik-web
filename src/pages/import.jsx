@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import Dropzone from "react-dropzone"
 import { Link } from 'react-router-dom'
-import { HOME_PAGE } from '../../config/url-constants'
+import { GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../../config/url-constants'
 
 
 const Import = () => {
@@ -80,13 +80,12 @@ const Import = () => {
                         </div>
                     </div>
                 </div>
-                {/*copy-right-section*/}
                 <footer className="bg-light">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="copyright-section">
-                                    <p>This app was made with ❤️ by <a href="https://github.com/valentin-cochin" target="_blank" rel="noopener noreferrer">Valentin Cochin</a> and <a href="https://github.com/AntoineFran" target="_blank" rel="noopener noreferrer">Antoine François</a></p>
+                                    <p>This app was made with <span role="img" aria-label="heart">❤️</span> by <a href={GITHUB_VALENTIN} target="_blank" rel="noopener noreferrer">Valentin Cochin</a> and <a href={GITHUB_ANTOINE} target="_blank" rel="noopener noreferrer">Antoine François</a></p>
                                 </div>
                                 <div className="form-button text-center">
                                     <Link to={HOME_PAGE} className="btn btn-custom btn-lg theme-color btn-back"><i className="fa fa-angle-double-left mr-2"></i>Back to home</Link>
@@ -95,7 +94,6 @@ const Import = () => {
                         </div>
                     </div>
                 </footer>
-                {/*end copy right section*/}
             </div>
         </section>
     );
