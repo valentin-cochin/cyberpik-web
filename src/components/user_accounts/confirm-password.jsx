@@ -5,7 +5,7 @@ export const ConfirmPassword = () => {
 
     return (
         <div className="form-group">
-            <Field type="password" name="confirm_password" className="form-control" placeholder="Confirmation Password" required="required" />
+            <Field type="password" name="confirm_password" className="form-control" placeholder="Confirmation Password" />
             <ErrorMessage componant="small" name="confirm_password" className="ml-5 mt-0 mb-3" />
         </div>
     )
