@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { EFFECT, FORGET_PASSWORD, GENERAL_CONDITIONS, HOME_PAGE, IMPORT, PROFILE, PROFILE_MANAGER, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP } from '../config/url-constants';
+import { DOWNLOAD, EFFECT, FORGET_PASSWORD, GENERAL_CONDITIONS, HOME_PAGE, IMPORT, PROFILE, PROFILE_MANAGER, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP } from '../config/url-constants';
 import './index.scss';
 import { default as NoMatch } from './pages/404';
+import Download from './pages/download';
 import Effect from './pages/effect';
 import ForgetPassword from './pages/forget-pwd';
 import GeneralConditions from './pages/general-conditions';
@@ -22,6 +23,7 @@ class Root extends React.Component {
             <BrowserRouter basename={'/'} >
                 <Switch>
                     <Route exact path={`${process.env.PUBLIC_URL}${HOME_PAGE}`} component={Home} />
+                    <Route path={`${process.env.PUBLIC_URL}${DOWNLOAD}`} component={Download} />
                     <Route path={`${process.env.PUBLIC_URL}${GENERAL_CONDITIONS}`} component={GeneralConditions} />
                     <Route path={`${process.env.PUBLIC_URL}${FORGET_PASSWORD}`} component={ForgetPassword} />
                     <Route path={`${process.env.PUBLIC_URL}${EFFECT}`} component={Effect} />
