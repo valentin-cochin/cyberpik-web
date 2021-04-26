@@ -6,8 +6,6 @@ import { BACK_END_USER_ACCOUNT, HOME_PAGE } from '../../../config/url-constants'
 const ArchiveModal = (id) => {
     const history = useHistory()
 
-    console.log(id.userAccountId);
-
     const handleClick = () => {
         axios.patch(BACK_END_USER_ACCOUNT + "archive/" +id.userAccountId)
         .then(

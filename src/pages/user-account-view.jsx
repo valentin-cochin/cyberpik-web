@@ -64,7 +64,6 @@ const UserAccountView = () => {
                         <div className="mx-auto image mb-5">
                             <img src={(profilePhoto === null) ? notFound : profilePhoto.photoUrl} className="image" alt="profile_picture" />
                         </div>
-                        {console.log(id)}
                         <br />
                         <h2 className="mb-4">{name}</h2>
                         <div className="mb-4">Email : {email}</div>

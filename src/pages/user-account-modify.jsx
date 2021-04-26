@@ -17,7 +17,7 @@ import axios from 'axios';
 const UserAccountModify = () => {
 
     const history = useHistory()
-    const [location, setLocation] = useState("")
+    const [location, setLocation] = useState()
 
     const submit = (values) => {
         axios.patch(BACK_END_USER_ACCOUNT + '1', { //TODO: get the useraccountid in the authentication
@@ -27,9 +27,9 @@ const UserAccountModify = () => {
             location: location,
             enableNewsletter: values.enableNewsletter
         }).then(res => {
-            history.pushState(PROFILE)
+            history.push(PROFILE)
         }).catch(err => {
-            if (err.response.status === 409) {
+            if (!(err.response === undefined)) {
                 document.getElementById("error_message_user_account_modify").innerHTML = err.response.data
             } else{
                 console.log(err);
