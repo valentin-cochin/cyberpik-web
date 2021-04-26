@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../../config/url-constants';
 
 const Download = () => {
 
@@ -32,10 +34,10 @@ const Download = () => {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="copyright-section">
-                                    <p>2018-19 Copyright &copy; By Themeforest Powered By Pixel Strap</p>
+                                <p>This app was made with <span role="img" aria-label="heart">❤️</span> by <a href={GITHUB_VALENTIN} target="_blank" rel="noopener noreferrer">Valentin Cochin</a> and <a href={GITHUB_ANTOINE} target="_blank" rel="noopener noreferrer">Antoine François</a></p>
                                 </div>
                                 <div className="form-button text-center">
-                                    <a href="" className="btn btn-custom btn-lg theme-color btn-back"><i className="fa fa-angle-double-left mr-2"></i>Back to home</a>
+                                    <Link to={HOME_PAGE} className="btn btn-custom btn-lg theme-color btn-back"><i className="fa fa-angle-double-left mr-2"></i>Back to home</Link>
                                 </div>
                             </div>
                         </div>
