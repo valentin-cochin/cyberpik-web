@@ -11,8 +11,7 @@ const UserAccountView = () => {
     const [id, setId] = useState(0)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
-    const [country, setCountry] = useState("")
-    const [city, setCity] = useState("")
+    const [location, setLocation] = useState("")
     const [profilePhoto, setProfilePhoto] = useState({})
 
     useEffect(() => {
@@ -26,8 +25,7 @@ const UserAccountView = () => {
             setId(resp.data.userAccountId)
             setName(resp.data.userName)
             setEmail(resp.data.email)
-            setCity(resp.data.city.name)
-            setCountry(resp.data.city.country.name)
+            setLocation(resp.data.location)
             setProfilePhoto(resp.data.profilePhoto)
             console.log("end load");
         }).catch(err => {
@@ -70,8 +68,7 @@ const UserAccountView = () => {
                         <br />
                         <h2 className="mb-4">{name}</h2>
                         <div className="mb-4">Email : {email}</div>
-                        <div className="mb-4">{(country != null) && "Country : " + country}</div>
-                        <div>{(city != null) && "City : " + city}</div>
+                        <div>{(location != null) && "location : " + location}</div>
                     </div>
                     <br />
                     <div className="row">

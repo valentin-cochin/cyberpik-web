@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { GOOGLE_PLACE_API_TOKEN } from './../../../config/api-tokens'
 
-const Location = ({setLocation}) => {
+const Location = ({setLocation, handleChange }) => {
     let autoComplete;
 
     const loadScript = (url, callback) => {
@@ -54,7 +54,7 @@ const Location = ({setLocation}) => {
     return (
         <div className="search-location-input form-group">
             <input type="text" name="location" className="form-control" placeholder="city" ref={autoCompleteRef}
-                onChange={event => setQuery(event.target.value)} value={query} />
+                onChange={event => {setQuery(event.target.value); setLocation(event.target.value)}} value={query} />
         </div>
     );
 }

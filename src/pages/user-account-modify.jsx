@@ -8,27 +8,33 @@ import { Password } from '../components/user_accounts/password';
 import { ConfirmPassword } from '../components/user_accounts/confirm-password';
 import Location from '../components/user_accounts/location';
 import { EnableNewsletter } from '../components/user_accounts/enable-newsletter';
-import { Link } from 'react-router-dom';
-import { BACK_END_USER_ACCOUNT, HOME_PAGE } from '../../config/url-constants';
+import { Link, useHistory } from 'react-router-dom';
+import { BACK_END_USER_ACCOUNT, HOME_PAGE, PROFILE } from '../../config/url-constants';
 import axios from 'axios';
 
 
 
 const UserAccountModify = () => {
 
+    const history = useHistory()
     const [location, setLocation] = useState("")
 
     const submit = (values) => {
-        console.log(location);
         axios.patch(BACK_END_USER_ACCOUNT + '1', { //TODO: get the useraccountid in the authentication
             userName: values.username,
             email: values.email,
             password: values.password,
             location: location,
             enableNewsletter: values.enableNewsletter
-        }).then(
-            console.log("ok")
-        )
+        }).then(res => {
+            history.pushState(PROFILE)
+        }).catch(err => {
+            if (err.response.status === 409) {
+                document.getElementById("error_message_user_account_modify").innerHTML = err.response.data
+            } else{
+                console.log(err);
+            }
+        })
     }
 
 
@@ -53,6 +59,7 @@ const UserAccountModify = () => {
                             <ConfirmPassword />
                             <Location setLocation={setLocation} />
                             <EnableNewsletter />
+                            <div id="error_message_user_account_modify" className="text-center mt-0 mb-3"></div>
                             <div className="form-button text-center">
                                 <button type="submit" className="btn btn-custom theme-color">Submit</button>
                             </div>
