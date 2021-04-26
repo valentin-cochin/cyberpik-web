@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DOWNLOAD, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
+import EffectCarousel from '../components/effect-carousel';
 
 
 const Effect = () => {
@@ -24,6 +25,7 @@ const Effect = () => {
                             <div className="col-lg-8 offset-lg-2">
                                 <h2>Choose the effect</h2>
                             </div>
+                            <EffectCarousel/>
                         </div>
                     </div>
                 </div>
@@ -34,12 +36,12 @@ const Effect = () => {
                                 <div className="copyright-section">
                                     <p>This app was made with <span role="img" aria-label="heart">❤️</span> by <a href={GITHUB_VALENTIN} target="_blank" rel="noopener noreferrer">Valentin Cochin</a> and <a href={GITHUB_ANTOINE} target="_blank" rel="noopener noreferrer">Antoine François</a></p>
                                 </div>
-                                <div className="row d-flex justify-content-center">
+                                <div className="row d-flex justify-content-center align-items">
                                     <div className="col-3">
-                                        <Link to={IMPORT} className="btn btn-custom btn-lg theme-color btn-back"><i className="fa fa-angle-double-left mr-2"></i>Back to import</Link>
+                                        <Link to={IMPORT} className="btn btn-custom btn-lg theme-color btn-back m-2"><i className="fa fa-angle-double-left mr-2"></i>Import</Link>
                                     </div>
                                     <div className="col-3">
-                                        <Link to={DOWNLOAD} className="btn btn-custom btn-lg theme-color btn-back"><i className="fa fa-angle-double-right mr-2"></i>Tranform the image</Link>
+                                        <Link to={DOWNLOAD} className="btn btn-custom btn-lg theme-color btn-back m-2"><i className="fa fa-angle-double-right mr-2"></i>Transform</Link>
                                     </div>
                                 </div>
                             </div>
