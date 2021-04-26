@@ -5,6 +5,7 @@ export const BACK_END_URL = 'http://localhost:8080/cyberpik'
 export const BACK_END_USER_ACCOUNT = BACK_END_URL + '/user_accounts/'
 
 // URL to navigate between the different front pages
+export const DOWNLOAD = '/download'
 export const GENERAL_CONDITIONS = '/general-conditions'
 export const FORGET_PASSWORD = '/forget-password'
 export const EFFECT = '/effect'
