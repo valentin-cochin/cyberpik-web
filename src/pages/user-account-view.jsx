@@ -1,12 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { BACK_END_USER_ACCOUNT, PROFILE_MANAGER } from '../../config/url-constants';
+import { Link, useHistory } from 'react-router-dom';
+import { BACK_END_USER_ACCOUNT, HOME_PAGE, PROFILE_MANAGER } from '../../config/url-constants';
 import Navbar from '../components/navbar';
 import ArchiveModal from '../components/user_accounts/archive-modal';
+import DeleteModal from '../components/user_accounts/delete-modal';
 import notFound from "./../../public/assets/images/CyberPik-logo.png";
 
 const UserAccountView = () => {
+
+    const history = useHistory()
 
     const [id, setId] = useState(0)
     const [name, setName] = useState("")
@@ -21,7 +24,7 @@ const UserAccountView = () => {
     const getUserAccount = () => {
         console.log("start load")
         axios.get(BACK_END_USER_ACCOUNT + '1').then(resp => {
-            console.log(resp.data);
+            console.log(resp);
             setId(resp.data.userAccountId)
             setName(resp.data.userName)
             setEmail(resp.data.email)
@@ -30,6 +33,7 @@ const UserAccountView = () => {
             console.log("end load");
         }).catch(err => {
             console.log(err)
+            history.push(HOME_PAGE)
         })
     }
 
@@ -43,7 +47,7 @@ const UserAccountView = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-6 col-sm-6 col-text-center d-align-center">
-                                <h2 className="title"><span>Review</span></h2>
+                                <h2 className="title"><span>Profile</span></h2>
                             </div>
                         </div>
                     </div>
@@ -58,7 +62,6 @@ const UserAccountView = () => {
                     <div className="team-circle3"><img src="assets/images/team.png" alt="" /></div>
                 </div>
 
-
                 <div className="review-box">
                     <div id="overlay theme-form">
                         <div className="mx-auto image mb-5">
@@ -70,14 +73,18 @@ const UserAccountView = () => {
                         <div>{(location != null) && "location : " + location}</div>
                     </div>
                     <br />
-                    <div className="row">
+                    <div className="row justify-content-around">
                         <div className="form-button text-center col-6">
                             <button className="btn btn-custom btn-lg"><Link className="text-white" to={PROFILE_MANAGER}>Modify</Link></button>
                         </div>
                         <div className="form-button text-center col-6">
                             <button className="btn btn-custom btn-lg" data-toggle="modal" data-target="#archive">Archive</button>
                         </div>
-                        <ArchiveModal userAccountId={id}/>
+                        <ArchiveModal userAccountId={id} />
+                        <div className="form-button text-center col-6 mt-3">
+                            <button className="btn btn-custom btn-lg" data-toggle="modal" data-target="#delete">Delete</button>
+                        </div>
+                        <DeleteModal userAccountId={id} />
                     </div>
                 </div>
             </section>
