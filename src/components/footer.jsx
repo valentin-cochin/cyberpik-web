@@ -1,4 +1,5 @@
 import React from 'react';
+import { GITHUB_ANTOINE, GITHUB_VALENTIN } from '../../config/url-constants';
 
 
 class Footer extends React.Component {
@@ -54,7 +55,7 @@ class Footer extends React.Component {
         </section>
 
         <div className="copyright-section index-footer">
-           <p>This app was made with <span role="img" aria-label="heart">❤️</span> by <a href="https://github.com/valentin-cochin" target="_blank" rel="noopener noreferrer">Valentin Cochin</a> and <a href="https://github.com/AntoineFran" target="_blank" rel="noopener noreferrer">Antoine François</a></p>
+           <p>This app was made with <span role="img" aria-label="heart">❤️</span> by <a href={GITHUB_VALENTIN} target="_blank" rel="noopener noreferrer">Valentin Cochin</a> and <a href={GITHUB_ANTOINE} target="_blank" rel="noopener noreferrer">Antoine François</a></p>
         </div>
 
         <div className="tap-top">

@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { HOME_PAGE } from '../../config/url-constants'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../../config/url-constants';
 
 
 const Import = () => {
@@ -42,7 +42,7 @@ const Import = () => {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="copyright-section">
-                                    <p>This app was made with ❤️ by <a href="https://github.com/valentin-cochin" target="_blank" rel="noopener noreferrer">Valentin Cochin</a> and <a href="https://github.com/AntoineFran" target="_blank" rel="noopener noreferrer">Antoine François</a></p>
+                                    <p>This app was made with ❤️ by <a href={GITHUB_VALENTIN} target="_blank" rel="noopener noreferrer">Valentin Cochin</a> and <a href={GITHUB_ANTOINE} target="_blank" rel="noopener noreferrer">Antoine François</a></p>
                                 </div>
                                 <div className="form-button text-center">
                                     <Link to={HOME_PAGE} className="btn btn-custom btn-lg theme-color btn-back"><i className="fa fa-angle-double-left mr-2"></i>Back to home</Link>
