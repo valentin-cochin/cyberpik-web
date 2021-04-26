@@ -11,19 +11,15 @@ import { Password } from '../components/user_accounts/password';
 import { ConfirmPassword } from '../components/user_accounts/confirm-password';
 import { EnableNewsletter } from '../components/user_accounts/enable-newsletter';
 import { TermsConditions } from '../components/user_accounts/terms-conditions';
-import { HOME_PAGE, SIGN_IN, BACK_END_SIGN_UP } from '../../config/url-constants'
+import { HOME_PAGE, SIGN_IN, BACK_END_USER_ACCOUNT } from '../../config/url-constants'
 
 
 
 const SignUp = () => {
-
-   setTimeout(function () {
-      document.querySelector(".loader-wrapper").style = "display: none";
-   }, 2000);
-
    const history = useHistory()
+
    const submit = (values) => {
-      axios.post(BACK_END_SIGN_UP, {
+      axios.post(BACK_END_USER_ACCOUNT, {
          userName: values.username,
          email: values.email,
          password: values.password,
