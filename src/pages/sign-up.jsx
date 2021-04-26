@@ -27,7 +27,11 @@ const SignUp = () => {
       }).then(res => {
          history.push(HOME_PAGE);
       }).catch(err => {
-         document.getElementById("error_message_sign_up").innerHTML = err.response.data
+         if (err.response.status === 409) {
+            document.getElementById("error_message_sign_up").innerHTML = err.response.data
+         } else {
+            console.log(err);
+         }
       })
    }
 
