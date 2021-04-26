@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import Dropzone from "react-dropzone"
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../../config/url-constants'
 
 
 const Import = () => {
+    let history = useHistory();
 
     const style = {
         flex: 1,
@@ -38,8 +39,11 @@ const Import = () => {
                 }
             })
                 .then(response => {
-                    console.log(response.data);
-                    // TODO: Add preview code here
+                    console.log(response.data)
+                    history.push({
+                        pathname: '/effect',
+                        state: { detail: response.data }
+                    })
                 })
                 .catch((error) => {
                     console.log(error)
