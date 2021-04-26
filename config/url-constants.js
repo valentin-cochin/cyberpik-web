@@ -7,6 +7,7 @@ export const BACK_END_USER_ACCOUNT = BACK_END_URL + '/user_accounts/'
 // URL to navigate between the different front pages
 export const GENERAL_CONDITIONS = '/general-conditions'
 export const FORGET_PASSWORD = '/forget-password'
+export const EFFECT = '/effect'
 export const HOME_PAGE = '/'
 export const IMPORT = '/import'
 export const PROFILE = '/profile'

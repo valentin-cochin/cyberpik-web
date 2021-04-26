@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { FORGET_PASSWORD, GENERAL_CONDITIONS, HOME_PAGE, IMPORT, PROFILE, PROFILE_MANAGER, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP } from '../config/url-constants';
+import { EFFECT, FORGET_PASSWORD, GENERAL_CONDITIONS, HOME_PAGE, IMPORT, PROFILE, PROFILE_MANAGER, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP } from '../config/url-constants';
 import './index.scss';
 import { default as NoMatch } from './pages/404';
+import Effect from './pages/effect';
 import ForgetPassword from './pages/forget-pwd';
 import GeneralConditions from './pages/general-conditions';
 import Home from './pages/home';
@@ -23,6 +24,7 @@ class Root extends React.Component {
                     <Route exact path={`${process.env.PUBLIC_URL}${HOME_PAGE}`} component={Home} />
                     <Route path={`${process.env.PUBLIC_URL}${GENERAL_CONDITIONS}`} component={GeneralConditions} />
                     <Route path={`${process.env.PUBLIC_URL}${FORGET_PASSWORD}`} component={ForgetPassword} />
+                    <Route path={`${process.env.PUBLIC_URL}${EFFECT}`} component={Effect} />
                     <Route path={`${process.env.PUBLIC_URL}${IMPORT}`} component={Import} />
                     <Route path={`${process.env.PUBLIC_URL}${PROFILE}`} component={UserAccountView} />
                     <Route path={`${process.env.PUBLIC_URL}${PROFILE_MANAGER}`} component={UserAccountModify} />
