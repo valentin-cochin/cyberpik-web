@@ -11,3 +11,13 @@ export const signUpInitialValues = {
      email: "",
      password: ""
  }
+
+ export const userAccountModifyInitialValues = {
+    username: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+    location: "",
+    profile_picture : {},
+    enableNewsletter: false
+ }
