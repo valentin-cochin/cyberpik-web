@@ -5,9 +5,9 @@ import OwlCarousel from 'react-owl-carousel';
 const EffectCarousel = () => {
     const [images, setImages] = useState(
         [
-            { id: 0, title: 'item #1', src: '' },
-            { id: 1, title: 'item #2', src: '' },
-            { id: 2, title: 'item #5', src: '' }
+            { id: 0, title: 'item #1', src: "assets/images/app/2.jpg" },
+            { id: 1, title: 'item #2', src: "assets/images/app/3.jpg" },
+            { id: 2, title: 'item #5', src: "assets/images/app/2.jpg" }
         ]);
 
     const carouselOptions = {
@@ -34,7 +34,7 @@ const EffectCarousel = () => {
 
     // jQuery method on
     // var owl = $('owl.carousel')
-    const handleChange = (property) =>  {
+    const handleChange = (property) => {
         var current = property.item.index
         var src = $(property.target).find(".owl-item").eq(current).find("img").attr('src');
         console.log('Image current is ' + src);
@@ -53,11 +53,7 @@ const EffectCarousel = () => {
             responsive={carouselOptions}
             onChanged={handleChange}
         >
-            <div className="screenshot-item"><img src="assets/images/app/12.jpg" alt="app" /></div>
-            <div className="screenshot-item"><img src="assets/images/app/2.jpg" alt="app" /></div>
-            <div className="screenshot-item"><img src="assets/images/app/3.jpg" alt="app" /></div>
-            <div className="screenshot-item"><img src="assets/images/app/4.jpg" alt="app" /></div>
-            <div className="screenshot-item"><img src="assets/images/app/5.jpg" alt="app" /></div>
+            {images.map((image) => <div className="screenshot-item" key={image.id}><img src={image.src} alt={image.title} /></div>)}
         </OwlCarousel>
     );
 }
