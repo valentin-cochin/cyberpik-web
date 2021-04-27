@@ -10,19 +10,13 @@ const EffectCarousel = () => {
             { id: 2, title: 'item #5', src: "assets/images/app/2.jpg" }
         ]);
 
-    const carouselOptions = {
+    const responsiveOptions = {
         0: {
             items: 2,
         },
         768: {
             items: 3,
         },
-        992: {
-            items: 4,
-        },
-        1200: {
-            items: 5
-        }
     };
 
     useEffect(() => {
@@ -31,13 +25,13 @@ const EffectCarousel = () => {
         }, 1200);
     })
 
-
-    // jQuery method on
-    // var owl = $('owl.carousel')
     const handleChange = (property) => {
+        //$('.owl-item.active.center > div:after').css('border', '1rem solid')
         var current = property.item.index
-        var src = $(property.target).find(".owl-item").eq(current).find("img").attr('src');
-        console.log('Image current is ' + src);
+        $(property.target).find(".owl-item").css('border', 'none')
+        $(property.target).find(".owl-item").eq(current).css('border', 'solid')
+        var src = $(property.target).find(".owl-item").eq(current).find("img").attr('src')
+        console.log('Image current is ' + src)
     }
 
 
@@ -46,14 +40,16 @@ const EffectCarousel = () => {
             className="screenshot-carousel owl-carousel owl-theme"
             loop={true}
             margin={30}
-            items={5}
+            items={3}
             center={true}
             dots={false}
             autoplay={false}
-            responsive={carouselOptions}
+            responsive={responsiveOptions}
+            nav={true}
+            navText={["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"]}
             onChanged={handleChange}
         >
-            {images.map((image) => <div className="screenshot-item" key={image.id}><img src={image.src} alt={image.title} /></div>)}
+            {images.map((image) => <div className="screenshot-item" key={image.title}><img src={image.src} alt={image.title} /></div>)}
         </OwlCarousel>
     );
 }
