@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import Dropzone from "react-dropzone"
 import { Link, useHistory } from 'react-router-dom'
-import { GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../../config/url-constants'
+import { EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../../config/url-constants'
 
 
 const Import = () => {
@@ -41,8 +41,8 @@ const Import = () => {
                 .then(response => {
                     console.log(response.data)
                     history.push({
-                        pathname: '/effect',
-                        state: { detail: response.data }
+                        pathname: EFFECT,
+                        state: { imageId: response.data }
                     })
                 })
                 .catch((error) => {
