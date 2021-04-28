@@ -10,11 +10,11 @@ const Effect = () => {
     const history = useHistory()
     let imageId
 
-    if (!location.state) {
-        history.push(IMPORT)
-    } else {
-        imageId = location.state.imageId
-    }
+    // if (!location.state) {
+    //     history.push(IMPORT)
+    // } else {
+    //     imageId = location.state.imageId
+    // }
 
     console.log("imageId from Import view is " + imageId)
 
@@ -26,6 +26,13 @@ const Effect = () => {
 
     const handleTransformButton = () => {
         console.log(effectTitle)
+        history.push({
+            pathname: DOWNLOAD,
+            state: {
+                effectTitle: effectTitle,
+                imageId: imageId
+            }
+        })
     }
 
     return (
@@ -60,7 +67,7 @@ const Effect = () => {
                                 <Link to={IMPORT} className="btn btn-custom btn-lg theme-color btn-back m-2"><i className="fa fa-angle-double-left mr-2"></i>Import</Link>
                             </div>
                             <div className="col-3">
-                                <Link to={DOWNLOAD} className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleTransformButton}><i className="fa fa-angle-double-right mr-2"></i>Transform</Link>
+                                <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleTransformButton}><i className="fa fa-angle-double-right mr-2"></i>Transform</button>
                             </div>
                         </div>
                     </div>
