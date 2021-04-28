@@ -42,7 +42,7 @@ const Import = () => {
                     console.log(response.data)
                     history.push({
                         pathname: '/effect',
-                        state: { detail: response.data }
+                        state: { imageId: response.data }
                     })
                 })
                 .catch((error) => {

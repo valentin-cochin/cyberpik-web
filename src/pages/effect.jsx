@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { DOWNLOAD, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
 import EffectCarousel from '../components/effect-carousel';
 
 
 const Effect = () => {
+    const location = useLocation();
+    const imageId = location.state.imageId;
+    console.log(imageId)
+
     useEffect(() => {
         setTimeout(function () {
             document.querySelector(".loader-wrapper").style = "display: none"
         }, 1200);
     })
+
 
     return (
         <section className="authentication-form download">
