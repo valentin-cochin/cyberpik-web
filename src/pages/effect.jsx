@@ -1,12 +1,20 @@
 import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { DOWNLOAD, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
 import EffectCarousel from '../components/effect-carousel';
 
 
 const Effect = () => {
-    const location = useLocation();
-    const imageId = location.state.imageId;
+    const location = useLocation()
+    const history = useHistory()
+    let imageId
+
+    if (!location.state) {
+        history.push(IMPORT)
+    } else {
+        imageId = location.state.imageId
+    }
+
     console.log(imageId)
 
     useEffect(() => {
