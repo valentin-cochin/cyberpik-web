@@ -2,7 +2,7 @@ import $ from 'jquery';
 import React, { useEffect, useState } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 
-const EffectCarousel = () => {
+const EffectCarousel = (props) => {
     const [images, setImages] = useState(
         [
             { id: 0, title: 'item #1', src: "assets/images/app/2.jpg" },
@@ -33,9 +33,10 @@ const EffectCarousel = () => {
         slides.css('border', 'none')
         currSlide.css('border', 'solid')
 
-        var src = currSlide.find("img").attr('src')
+        var alt = currSlide.find("img").attr('alt')
 
-        console.log('Image current is ' + src)
+        console.log('Image current is ' + alt)
+        props.updateEffectTitle(alt)
     }
 
 

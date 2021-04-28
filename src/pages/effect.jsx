@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { DOWNLOAD, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
 import EffectCarousel from '../components/effect-carousel';
 
 
 const Effect = () => {
+    const [effectTitle, setEffectTitle] = useState(0);
     const location = useLocation()
     const history = useHistory()
     let imageId
@@ -15,7 +16,7 @@ const Effect = () => {
         imageId = location.state.imageId
     }
 
-    console.log(imageId)
+    console.log("imageId from Import view is " + imageId)
 
     useEffect(() => {
         setTimeout(function () {
@@ -23,6 +24,9 @@ const Effect = () => {
         }, 1200);
     })
 
+    const handleTransformButton = () => {
+        console.log(effectTitle)
+    }
 
     return (
         <section className="authentication-form download">
@@ -38,7 +42,7 @@ const Effect = () => {
                             <div className="col-lg-8 offset-lg-2">
                                 <h2>Choose the effect</h2>
                             </div>
-                            <EffectCarousel />
+                            <EffectCarousel  updateEffectTitle={setEffectTitle}/>
                         </div>
                     </div>
                 </div>
@@ -56,7 +60,7 @@ const Effect = () => {
                                 <Link to={IMPORT} className="btn btn-custom btn-lg theme-color btn-back m-2"><i className="fa fa-angle-double-left mr-2"></i>Import</Link>
                             </div>
                             <div className="col-3">
-                                <Link to={DOWNLOAD} className="btn btn-custom btn-lg theme-color btn-back m-2"><i className="fa fa-angle-double-right mr-2"></i>Transform</Link>
+                                <Link to={DOWNLOAD} className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleTransformButton}><i className="fa fa-angle-double-right mr-2"></i>Transform</Link>
                             </div>
                         </div>
                     </div>
