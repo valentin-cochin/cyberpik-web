@@ -25,15 +25,15 @@ class Navbar extends React.Component {
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">about</a>
                                 <ul className="dropdown-menu">
-                                    <li className="nav-item"><a className="nav-link" href={`${process.env.PUBLIC_URL}/project-presentation`}>Project presentation</a></li>
-                                    <li className="nav-item"><a className="nav-link" href={`${process.env.PUBLIC_URL}/general-conditions`}>General Conditions</a></li>
+                                    <a className="nav-item"><a className="nav-link" href={`${process.env.PUBLIC_URL}/project-presentation`}>Project presentation</a></a>
+                                    <a className="nav-item"><a className="nav-link" href={`${process.env.PUBLIC_URL}/general-conditions`}>General Conditions</a></a>
                                 </ul>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href={`${process.env.PUBLIC_URL}/sign-in`} target="_blank">sign in</a>
+                                <a className="nav-link" href={`${process.env.PUBLIC_URL}/sign-in`}>sign in</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href={`${process.env.PUBLIC_URL}/profile`} target="_blank">profile</a>
+                                <a className="nav-link" href={`${process.env.PUBLIC_URL}/profile`}>profile</a>
                             </li>
                         </ul>
                     </div>
