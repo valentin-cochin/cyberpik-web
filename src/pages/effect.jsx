@@ -6,22 +6,23 @@ import EffectCarousel from '../components/effect-carousel';
 
 const Effect = () => {
     const [effectTitle, setEffectTitle] = useState(0);
+    const [imageId, setImageId] = useState(0);
     const location = useLocation()
     const history = useHistory()
-    let imageId
-
-    if (!location.state) {
-        history.push(IMPORT)
-    } else {
-        imageId = location.state.imageId
-    }
-
-    console.log("imageId is " + imageId)
 
     useEffect(() => {
         setTimeout(function () {
             document.querySelector(".loader-wrapper").style = "display: none"
         }, 1200);
+    })
+
+    useEffect(() => {
+        if (!location.state) {
+            history.push(IMPORT)
+        } else {
+            setImageId(location.state.imageId)
+            console.log("imageId is " + imageId)
+        }
     })
 
     const handleTransformButton = () => {

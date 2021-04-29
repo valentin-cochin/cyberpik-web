@@ -1,22 +1,17 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import { DOWNLOAD, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
-import EffectCarousel from '../components/effect-carousel';
+import { useHistory, useLocation } from 'react-router-dom';
+import { BACK_END_URL, DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
 
 
 const Preview = () => {
-    const [effectTitle, setEffectTitle] = useState(0);
+    const [effectTitle, setEffectTitle] = useState(0)
+    const [orignalImageId, setOrignalImageId] = useState(0)
+    const [transformedImage, setTransformedImage] = useState(0);
     const location = useLocation()
     const history = useHistory()
-    let imageId
 
-    if (!location.state) {
-        history.push(IMPORT)
-    } else {
-        imageId = location.state.imageId
-    }
-
-    console.log("imageId from Import view is " + imageId)
+    console.log("imageId from Import view is " + orignalImageId)
 
     useEffect(() => {
         setTimeout(function () {
@@ -24,13 +19,48 @@ const Preview = () => {
         }, 1200);
     })
 
-    const handleTransformButton = () => {
+    useEffect(() => {
+        if (!location.state) {
+            history.push(IMPORT)
+        } else {
+            setOrignalImageId(location.state.imageId)
+            setEffectTitle(location.state.effectTitle)
+            console.log(orignalImageId)
+            console.log(effectTitle)
+        }
+    })
+
+    useEffect(() => {
+        axios.get(
+          BACK_END_URL + "/images/" + orignalImageId,
+          { responseType: 'arraybuffer' },
+        )
+        .then(response => {
+          const base64 = btoa(
+            new Uint8Array(response.data).reduce(
+              (data, byte) => data + String.fromCharCode(byte),
+              ''
+            )
+          )
+          setTransformedImage({ source: "data:;base64," + base64 });
+        })
+    }, [orignalImageId])
+
+    const handleEffectButton = () => {
         console.log(effectTitle)
+        history.push({
+            pathname: EFFECT,
+            state: {
+                imageId: orignalImageId
+            }
+        })
+    }
+
+    const handleDownloadButton = () => {
         history.push({
             pathname: DOWNLOAD,
             state: {
-                effectTitle: effectTitle,
-                imageId: imageId
+                transformedImage: transformedImage
             }
         })
     }
@@ -46,11 +76,13 @@ const Preview = () => {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="text-center">
-                            <i className="fa fa-magic" aria-hidden="true" style={{ fontSize: "10rem", color: "#777777" }}></i>
+                            <i className="fa fa-image" aria-hidden="true" style={{ fontSize: "10rem", color: "#777777" }}></i>
                             <div className="col-lg-8 offset-lg-2">
-                                <h2>Choose the effect</h2>
+                                <h2>See the result</h2>
                             </div>
-                            <EffectCarousel  updateEffectTitle={setEffectTitle}/>
+                            <div className="overflow-hidden">
+                                <img src={transformedImage.source} alt="transformed" style={{maxWidth: "100%", height: "auto", maxHeight: "500px"}} />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,10 +97,10 @@ const Preview = () => {
                         </div>
                         <div className="row d-flex justify-content-around">
                             <div className="col-3">
-                                <Link to={IMPORT} className="btn btn-custom btn-lg theme-color btn-back m-2"><i className="fa fa-angle-double-left mr-2"></i>Change Effect</Link>
+                                <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleEffectButton}><i className="fa fa-angle-double-left mr-2"></i>Effect</button>
                             </div>
                             <div className="col-3">
-                                <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleTransformButton}><i className="fa fa-angle-double-right mr-2"></i>Download</button>
+                                <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleDownloadButton}><i className="fa fa-angle-double-right mr-2"></i>Download</button>
                             </div>
                         </div>
                     </div>
