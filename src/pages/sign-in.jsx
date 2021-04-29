@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import { BACK_END_USER_ACCOUNT, FORGET_PASSWORD, HOME_PAGE, SIGN_UP } from '../../config/url-constants';
-import { Email } from '../components/user_accounts/email';
+import { UserName } from '../components/user_accounts/username';
 import { Password } from '../components/user_accounts/password';
 import { signInInitialValues } from '../shared/initialValues';
 import { signInValidationSchema } from '../shared/validationSchemas';
@@ -14,9 +14,10 @@ const history = useHistory()
 
 const submit = (values) => {
    axios.post(BACK_END_USER_ACCOUNT + 'login', {
-      email: values.email,
+      userName: values.username,
       password: values.password
    }).then(res => {
+      console.log(res.data);
       history.push(HOME_PAGE)
    }).catch(err => {
       document.getElementById("error_message_sign_in").innerHTML = err.response.data
@@ -39,7 +40,7 @@ return (
                onSubmit={submit}
                validationSchema={signInValidationSchema}>
                <Form className="theme-form">
-                  <Email />
+                  <UserName />
                   <Password />
                   <div className="form-group row">
                      <div className="custom-control custom-checkbox col-6">
