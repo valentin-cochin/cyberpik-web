@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT, PREVIEW } from '../../config/url-constants';
+import { DOWNLOAD, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
 import EffectCarousel from '../components/effect-carousel';
 
 
-const Effect = () => {
+const Preview = () => {
     const [effectTitle, setEffectTitle] = useState(0);
     const location = useLocation()
     const history = useHistory()
@@ -16,7 +16,7 @@ const Effect = () => {
         imageId = location.state.imageId
     }
 
-    console.log("imageId is " + imageId)
+    console.log("imageId from Import view is " + imageId)
 
     useEffect(() => {
         setTimeout(function () {
@@ -25,8 +25,9 @@ const Effect = () => {
     })
 
     const handleTransformButton = () => {
+        console.log(effectTitle)
         history.push({
-            pathname: PREVIEW,
+            pathname: DOWNLOAD,
             state: {
                 effectTitle: effectTitle,
                 imageId: imageId
@@ -64,10 +65,10 @@ const Effect = () => {
                         </div>
                         <div className="row d-flex justify-content-around">
                             <div className="col-3">
-                                <Link to={IMPORT} className="btn btn-custom btn-lg theme-color btn-back m-2"><i className="fa fa-angle-double-left mr-2"></i>Import</Link>
+                                <Link to={IMPORT} className="btn btn-custom btn-lg theme-color btn-back m-2"><i className="fa fa-angle-double-left mr-2"></i>Change Effect</Link>
                             </div>
                             <div className="col-3">
-                                <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleTransformButton}><i className="fa fa-angle-double-right mr-2"></i>Transform</button>
+                                <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleTransformButton}><i className="fa fa-angle-double-right mr-2"></i>Download</button>
                             </div>
                         </div>
                     </div>
@@ -78,4 +79,4 @@ const Effect = () => {
 }
 
 
-export default Effect
+export default Preview
