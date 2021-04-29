@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import Dropzone from "react-dropzone"
 import { Link, useHistory } from 'react-router-dom'
-import { EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../../config/url-constants'
+import { BACK_END_URL, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../../config/url-constants'
 
 
 const Import = () => {
@@ -33,7 +33,7 @@ const Import = () => {
             let formData = new FormData()
             formData.append("file", file)
 
-            axios.post("http://localhost:8080/images/", formData, {
+            axios.post(BACK_END_URL + "/images/", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

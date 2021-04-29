@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { DOWNLOAD, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
+import { GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT, PREVIEW } from '../../config/url-constants';
 import EffectCarousel from '../components/effect-carousel';
 
 
@@ -16,7 +16,7 @@ const Effect = () => {
         imageId = location.state.imageId
     }
 
-    console.log("imageId from Import view is " + imageId)
+    console.log("imageId is " + imageId)
 
     useEffect(() => {
         setTimeout(function () {
@@ -25,9 +25,8 @@ const Effect = () => {
     })
 
     const handleTransformButton = () => {
-        console.log(effectTitle)
         history.push({
-            pathname: DOWNLOAD,
+            pathname: PREVIEW,
             state: {
                 effectTitle: effectTitle,
                 imageId: imageId
