@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
@@ -17,6 +17,12 @@ import { HOME_PAGE, SIGN_IN, BACK_END_USER_ACCOUNT } from '../../config/url-cons
 
 const SignUp = () => {
    const history = useHistory()
+
+   useEffect(() => {
+      setTimeout(function () {
+         document.querySelector(".loader-wrapper").style = "display: none";
+      }, 2000);
+   })
 
    const submit = (values) => {
       axios.post(BACK_END_USER_ACCOUNT, {

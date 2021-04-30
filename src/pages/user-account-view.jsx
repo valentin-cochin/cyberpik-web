@@ -1,21 +1,27 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { BACK_END_USER_ACCOUNT, HOME_PAGE, PROFILE_MANAGER } from '../../config/url-constants';
+import { axiosToken } from '../../config/axios-config';
+import { HOME_PAGE, PROFILE_MANAGER, SIGN_IN } from '../../config/url-constants';
 import Navbar from '../components/navbar';
 import ArchiveModal from '../components/user_accounts/archive-modal';
 import DeleteModal from '../components/user_accounts/delete-modal';
+import { logout } from '../components/user_accounts/logout';
 import notFound from "./../../public/assets/images/CyberPik-logo.png";
 
 const UserAccountView = () => {
 
     const history = useHistory()
 
-    const [id, setId] = useState(0)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [location, setLocation] = useState("")
     const [profilePhoto, setProfilePhoto] = useState({})
+
+    useEffect(() => {
+        setTimeout(function () {
+            document.querySelector(".loader-wrapper").style = "display: none";
+        }, 2000);
+    })
 
     useEffect(() => {
         getUserAccount()
@@ -23,17 +29,16 @@ const UserAccountView = () => {
 
     const getUserAccount = () => {
         console.log("start load")
-        axios.get(BACK_END_USER_ACCOUNT + '1').then(resp => {
+        axiosToken.get('/user_accounts/').then(resp => {
             console.log(resp);
-            setId(resp.data.userAccountId)
             setName(resp.data.userName)
             setEmail(resp.data.email)
             setLocation(resp.data.location)
             setProfilePhoto(resp.data.profilePhoto)
             console.log("end load");
         }).catch(err => {
-            console.log(err)
-            history.push(HOME_PAGE)
+            logout()
+            history.push(SIGN_IN)
         })
     }
 
@@ -80,11 +85,11 @@ const UserAccountView = () => {
                         <div className="form-button text-center col-6">
                             <button className="btn btn-custom btn-lg" data-toggle="modal" data-target="#archive">Archive</button>
                         </div>
-                        <ArchiveModal userAccountId={id} />
+                        <ArchiveModal />
                         <div className="form-button text-center col-6 mt-3">
                             <button className="btn btn-custom btn-lg" data-toggle="modal" data-target="#delete">Delete</button>
                         </div>
-                        <DeleteModal userAccountId={id} />
+                        <DeleteModal />
                     </div>
                 </div>
             </section>
