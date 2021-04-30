@@ -28,14 +28,11 @@ const UserAccountView = () => {
     }, [])
 
     const getUserAccount = () => {
-        console.log("start load")
         axiosToken.get('/user_accounts/').then(resp => {
-            console.log(resp);
             setName(resp.data.userName)
             setEmail(resp.data.email)
             setLocation(resp.data.location)
             setProfilePhoto(resp.data.profilePhoto)
-            console.log("end load");
         }).catch(err => {
             logout()
             history.push(SIGN_IN)

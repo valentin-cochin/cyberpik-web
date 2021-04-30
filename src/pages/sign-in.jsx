@@ -30,7 +30,6 @@ const SignIn = () => {
          userName: values.username,
          password: values.password
       }).then(res => {
-         console.log(res.data)
          setToken(res.data)
          localStorage.setItem("token", res.data)
       }).catch(err => {

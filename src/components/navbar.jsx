@@ -46,15 +46,18 @@ const Navbar = () => {
                                 <a className="nav-link" href={PROFILE}>profile</a>
                             </li>
                         )}
-                        {isAuthenticated ?
+                        {isAuthenticated &&
                             <li className="nav-item"><a onClick={() => {
                                 logout()
                                 setIsAuthenticated(false)
-                            }} href={HOME_PAGE} className="nav-link">logout</a></li> :
+                            }} href={HOME_PAGE} className="nav-link">logout</a>
+                            </li>
+                        }
+                        {!isAuthenticated &&
                                 <li className="nav-item">
                                     <a className="nav-link" href={SIGN_IN}>sign in</a>
                                 </li>
-                         }
+                        }
 
                     </ul>
                 </div>
