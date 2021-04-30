@@ -1,11 +1,9 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { HOME_PAGE } from '../../../config/url-constants';
 import { axiosToken } from '../../../config/axios-config';
 import { logout } from './logout';
 
 const ArchiveModal = () => {
-    const history = useHistory()
 
     const handleClick = () => {
         axiosToken.patch('/user_accounts/archive/')

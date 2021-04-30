@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import { BACK_END_USER_ACCOUNT, FORGET_PASSWORD, HOME_PAGE, SIGN_UP } from '../../config/url-constants';
 import { UserName } from '../components/user_accounts/username';

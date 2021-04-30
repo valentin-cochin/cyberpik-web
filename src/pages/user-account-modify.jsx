@@ -38,7 +38,7 @@ const UserAccountModify = () => {
                 logout()
                 window.location.replace(HOME_PAGE)
             } else {
-                history.push(PROFILE)
+                window.location.replace(PROFILE)
             }
         }).catch(err => {
             if (!(err.response === undefined)) {
