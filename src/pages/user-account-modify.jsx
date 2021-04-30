@@ -36,17 +36,14 @@ const UserAccountModify = () => {
         }).then(res => {
             if (values.username !== "") {
                 logout()
-                window.location.replace(HOME_PAGE)
+                window.location.replace(SIGN_IN)
             } else {
                 window.location.replace(PROFILE)
             }
         }).catch(err => {
             if (!(err.response === undefined)) {
-                logout();
-                history.push(SIGN_IN);
-                document.getElementById("error_message_user_account_modify").innerHTML = err.response.data;
-            } else {
-                console.log(err);
+                logout()
+                document.getElementById("error_message_user_account_modify").innerHTML = err.response.data
             }
         })
     }

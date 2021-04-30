@@ -35,8 +35,6 @@ const SignUp = () => {
       }).catch(err => {
          if (err.response.status === 409) {
             document.getElementById("error_message_sign_up").innerHTML = err.response.data
-         } else {
-            console.log(err);
          }
       })
    }
