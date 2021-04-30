@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { axiosToken } from '../../config/axios-config';
-import { HOME_PAGE, PROFILE_MANAGER, SIGN_IN } from '../../config/url-constants';
+import { PROFILE_MANAGER, SIGN_IN } from '../../config/url-constants';
 import Navbar from '../components/navbar';
 import ArchiveModal from '../components/user_accounts/archive-modal';
 import DeleteModal from '../components/user_accounts/delete-modal';
