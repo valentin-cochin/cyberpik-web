@@ -11,7 +11,7 @@ const Preview = () => {
     const location = useLocation()
     const history = useHistory()
 
-    console.log("imageId from Import view is " + orignalImageId)
+    console.log("imageId from Preview view is " + orignalImageId)
 
     useEffect(() => {
         setTimeout(function () {
@@ -60,7 +60,7 @@ const Preview = () => {
         history.push({
             pathname: DOWNLOAD,
             state: {
-                transformedImage: transformedImage
+                transformedImage: 0
             }
         })
     }
