@@ -31,6 +31,7 @@ const Preview = () => {
     })
 
     useEffect(() => {
+        if(orignalImageId !== null)
         axios.get(
           BACK_END_URL + "/images/" + orignalImageId,
           { responseType: 'arraybuffer' },
