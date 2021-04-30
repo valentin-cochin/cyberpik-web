@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { userAccountModifyInitialValues } from '../shared/initialValues';
 import { userAccountModifyValidationSchema } from '../shared/validationSchemas';
@@ -9,8 +9,9 @@ import { ConfirmPassword } from '../components/user_accounts/confirm-password';
 import Location from '../components/user_accounts/location';
 import { EnableNewsletter } from '../components/user_accounts/enable-newsletter';
 import { Link, useHistory } from 'react-router-dom';
-import { BACK_END_USER_ACCOUNT, HOME_PAGE, PROFILE } from '../../config/url-constants';
-import axios from 'axios';
+import { HOME_PAGE, PROFILE, SIGN_IN } from '../../config/url-constants';
+import { axiosToken } from '../../config/axios-config';
+import { logout } from '../components/user_accounts/logout';
 
 
 
@@ -19,19 +20,32 @@ const UserAccountModify = () => {
     const history = useHistory()
     const [location, setLocation] = useState()
 
+    useEffect(() => {
+        setTimeout(function () {
+            document.querySelector(".loader-wrapper").style = "display: none";
+        }, 2000);
+    })
+
     const submit = (values) => {
-        axios.patch(BACK_END_USER_ACCOUNT + '1', { //TODO: get the useraccountid in the authentication
+        axiosToken.patch('/user_accounts/', {
             userName: values.username,
             email: values.email,
             password: values.password,
             location: location,
             enableNewsletter: values.enableNewsletter
         }).then(res => {
-            history.push(PROFILE)
+            if (values.username !== "") {
+                logout()
+                window.location.replace(HOME_PAGE)
+            } else {
+                history.push(PROFILE)
+            }
         }).catch(err => {
             if (!(err.response === undefined)) {
-                document.getElementById("error_message_user_account_modify").innerHTML = err.response.data
-            } else{
+                logout();
+                history.push(SIGN_IN);
+                document.getElementById("error_message_user_account_modify").innerHTML = err.response.data;
+            } else {
                 console.log(err);
             }
         })

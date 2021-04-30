@@ -8,7 +8,7 @@ export const signUpInitialValues = {
  }
 
  export const signInInitialValues = {
-     email: "",
+     username: "",
      password: ""
  }
 
