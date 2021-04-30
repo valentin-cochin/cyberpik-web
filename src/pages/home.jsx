@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'react-modal-video/scss/modal-video.scss';
 import { Link } from 'react-router-dom';
 import Tilt from 'react-tilt';
@@ -13,11 +13,11 @@ const Home = () => {
     document.body.classList.add('home-style');
     document.body.classList.add('three');
 
-    // useEffect(() => {
-    //     setTimeout(function () {
-    //         document.querySelector(".loader-wrapper").style = "display: none"
-    //     }, 1200);
-    // })
+    useEffect(() => {
+        setTimeout(function () {
+            document.querySelector(".loader-wrapper").style = "display: none"
+        }, 1200);
+    })
 
     return (
         <div>

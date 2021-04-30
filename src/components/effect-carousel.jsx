@@ -1,14 +1,14 @@
 import $ from 'jquery';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 
 const EffectCarousel = (props) => {
-    const [images, setImages] = useState(
+    const images =
         [
             { id: 0, title: 'item #1', src: "assets/images/app/2.jpg" },
             { id: 1, title: 'item #2', src: "assets/images/app/3.jpg" },
             { id: 2, title: 'item #5', src: "assets/images/app/5.jpg" }
-        ]);
+        ]
 
     const responsiveOptions = {
         0: {

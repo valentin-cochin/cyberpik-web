@@ -20,5 +20,5 @@ export const SIGN_UP = '/sign-up'
 export const THANK_YOU = '/thank-you'
 
 // Other URLs
-export const GITHUB_ANTOINE = 'https://github.com/valentin-cochin'
-export const GITHUB_VALENTIN = 'https://github.com/AntoineFran'
+export const GITHUB_ANTOINE = 'https://github.com/AntoineFran'
+export const GITHUB_VALENTIN = 'https://github.com/valentin-cochin'
