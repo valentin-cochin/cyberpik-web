@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { axiosToken } from '../../config/axios-config';
-import { PhotosList } from '../components/photos-list';
+import { PhotosList } from '../components/gallery/photos-list';
 import Navbar from '../components/navbar';
 import { logout } from '../components/user_accounts/logout';
 import { useHistory } from 'react-router';

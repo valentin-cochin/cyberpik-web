@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { axiosToken } from "../../config/axios-config";
 import { GALLERY } from "../../config/url-constants";
+import DeleteModal from "../components/gallery/delete-modal";
 import Navbar from "../components/navbar";
 
 const PhotoDetails = () => {
@@ -87,9 +88,10 @@ const PhotoDetails = () => {
               <button type="submit" className="btn btn-custom theme-color ml-5 mr-5 mt-5">
                 Define as Profile Picture
               </button>
-              <button type="submit" className="btn btn-custom theme-color mt-5">
+              <button type="submit" data-toggle="modal" data-target="#delete" className="btn btn-custom theme-color mt-5">
                 Delete
               </button>
+              <DeleteModal imageId={imageId} />
             </div>
           </div>
         </section>
