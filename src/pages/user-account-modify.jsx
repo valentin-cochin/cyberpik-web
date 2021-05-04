@@ -8,7 +8,7 @@ import { Password } from '../components/user_accounts/password';
 import { ConfirmPassword } from '../components/user_accounts/confirm-password';
 import Location from '../components/user_accounts/location';
 import { EnableNewsletter } from '../components/user_accounts/enable-newsletter';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { HOME_PAGE, PROFILE, SIGN_IN } from '../../config/url-constants';
 import { axiosToken } from '../../config/axios-config';
 import { logout } from '../components/user_accounts/logout';
@@ -17,7 +17,6 @@ import { logout } from '../components/user_accounts/logout';
 
 const UserAccountModify = () => {
 
-    const history = useHistory()
     const [location, setLocation] = useState()
 
     useEffect(() => {
