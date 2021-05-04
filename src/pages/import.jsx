@@ -1,8 +1,9 @@
-import axios from 'axios'
 import React, { useEffect } from 'react'
 import Dropzone from "react-dropzone"
 import { Link, useHistory } from 'react-router-dom'
-import { BACK_END_URL, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../../config/url-constants'
+import { axiosToken } from '../../config/axios-config'
+import { EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE, SIGN_IN } from '../../config/url-constants'
+import { logout } from '../components/user_accounts/logout'
 
 
 const Import = () => {
@@ -33,20 +34,19 @@ const Import = () => {
             let formData = new FormData()
             formData.append("file", file)
 
-            axios.post(BACK_END_URL + "/images/", formData, {
+            axiosToken.post("/images/", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
-            })
-                .then(response => {
+            }).then(response => {
                     console.log(response.data)
                     history.push({
                         pathname: EFFECT,
                         state: { imageId: response.data }
                     })
-                })
-                .catch((error) => {
-                    console.log(error)
+                }).catch(err => {
+                    logout()
+                    history.push(SIGN_IN)
                 })
         })
 
