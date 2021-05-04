@@ -1,5 +1,5 @@
 import React from 'react';
-import { PhotosDisplay } from '../components/photo-display';
+import { PhotosDisplay } from './photo-display';
 
 
 export const PhotosList = ({imagesId}) => {
