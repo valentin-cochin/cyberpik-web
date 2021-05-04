@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { BACK_END_URL, PHOTO_DETAILS } from "../../config/url-constants";
+import {  PHOTO_DETAILS } from "../../config/url-constants";
 import { useHistory } from "react-router";
-import PhotoDetails from "../pages/photo-details";
+import { axiosToken } from "../../config/axios-config";
 
 export const PhotosDisplay = ({ imageId }) => {
     const history = useHistory()
@@ -14,8 +13,8 @@ export const PhotosDisplay = ({ imageId }) => {
 
   const getImage = (imageId) => {
     if (imageId !== null)
-      axios
-        .get(BACK_END_URL + "/images/" + imageId, {
+      axiosToken
+        .get("/images/" + imageId, {
           responseType: "arraybuffer",
         })
         .then((response) => {

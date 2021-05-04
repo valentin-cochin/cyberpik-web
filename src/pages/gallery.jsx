@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { axiosToken } from '../../config/axios-config';
 import { PhotosList } from '../components/photos-list';
 import Navbar from '../components/navbar';
+import { logout } from '../components/user_accounts/logout';
+import { useHistory } from 'react-router';
+import { SIGN_IN } from '../../config/url-constants';
 
 
 
 const Gallery = () => {
+
+    const history = useHistory()
 
     const [imagesId, setImagesId] = useState(0)
 
@@ -16,10 +21,11 @@ const Gallery = () => {
     },[])
 
     useEffect(() => {
-        axiosToken.get('images/').then(resp =>{
+        axiosToken.get('/images/').then(resp =>{
             setImagesId(resp.data)
         }).catch(err => {
-            console.log(err);
+            logout()
+            history.push(SIGN_IN)
         })
     },[])
 
