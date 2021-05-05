@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { axiosToken } from "../../config/axios-config";
-import { GALLERY } from "../../config/url-constants";
+import { GALLERY, SIGN_IN } from "../../config/url-constants";
 import DeleteModal from "../components/gallery/delete-modal";
+import ModifyModal from "../components/gallery/modify-modal";
 import Navbar from "../components/navbar";
+import { logout } from "../components/user_accounts/logout";
 
 const PhotoDetails = () => {
   const location = useLocation();
   const history = useHistory();
   const [imageId, setImageId] = useState(0);
   const [image, setImage] = useState({});
+  const [imageTitle, setImageTitle] = useState("");
+  const [imageLocation, setImageLocation] = useState("");
 
   useEffect(() => {
     setTimeout(function () {
@@ -26,19 +30,37 @@ const PhotoDetails = () => {
   });
 
   useEffect(() => {
-    if (imageId !== 0)
-      axiosToken
-        .get("/images/" + imageId, { responseType: "arraybuffer" })
-        .then((response) => {
-          const base64 = btoa(
-            new Uint8Array(response.data).reduce(
-              (data, byte) => data + String.fromCharCode(byte),
-              ""
-            )
-          );
-          setImage({ source: "data:;base64," + base64 });
-        });
+    if (imageId !== 0) {
+    getImage();
+    getImageDetails();
+  }
   }, [imageId]);
+
+  const getImage = () => {
+    axiosToken
+      .get("/images/" + imageId, { responseType: "arraybuffer" })
+      .then((response) => {
+        const base64 = btoa(
+          new Uint8Array(response.data).reduce(
+            (data, byte) => data + String.fromCharCode(byte),
+            ""
+          )
+        );
+        setImage({ source: "data:;base64," + base64 });
+      }).catch(err => {
+        logout()
+        history.push(SIGN_IN)
+    });
+  };
+
+  const getImageDetails = () => {
+    axiosToken.get("/images/details/" + imageId).then((resp) => {
+      setImageTitle(resp.data.title);
+    }).catch(err => {
+      logout()
+      history.push(SIGN_IN)
+  })
+  };
 
   return (
     <div>
@@ -69,6 +91,9 @@ const PhotoDetails = () => {
             <div className="blog-item">
               <div className="blog-block">
                 <div className="blog-box">
+                  <h1 className="title text-center">
+                    <span>{imageTitle}</span>
+                  </h1>
                   <div className="overflow-hidden">
                     <a>
                       <img
@@ -82,13 +107,27 @@ const PhotoDetails = () => {
               </div>
             </div>
             <div className="form-button text-center">
-              <button type="submit" className="btn btn-custom theme-color mt-5">
+              <button
+                type="submit"
+                data-toggle="modal"
+                data-target="#modify"
+                className="btn btn-custom theme-color mt-5"
+              >
                 Modify
               </button>
-              <button type="submit" className="btn btn-custom theme-color ml-5 mr-5 mt-5">
+              <ModifyModal imageId={imageId} />
+              <button
+                type="submit"
+                className="btn btn-custom theme-color ml-5 mr-5 mt-5"
+              >
                 Define as Profile Picture
               </button>
-              <button type="submit" data-toggle="modal" data-target="#delete" className="btn btn-custom theme-color mt-5">
+              <button
+                type="submit"
+                data-toggle="modal"
+                data-target="#delete"
+                className="btn btn-custom theme-color mt-5"
+              >
                 Delete
               </button>
               <DeleteModal imageId={imageId} />
