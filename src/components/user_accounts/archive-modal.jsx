@@ -17,7 +17,7 @@ const ArchiveModal = () => {
         <div className="modal fade" id="archive" tabIndex="-1" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
-                    <div className="modal-header">
+                    <div className="modal-header justify-content-center">
                         <h5 className="modal-title">Are you sure you want to archive your account?</h5>
                     </div>
                     <div className="modal-footer justify-content-center">

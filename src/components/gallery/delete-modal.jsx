@@ -15,7 +15,7 @@ const DeleteModal = ({imageId}) => {
         <div className="modal fade" id="delete" tabIndex="-1" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
-                    <div className="modal-header">
+                    <div className="modal-header justify-content-center">
                         <h5 className="modal-title">Are you sure you want to delete this photo?</h5>
                     </div>
                     <div className="modal-footer justify-content-center">
