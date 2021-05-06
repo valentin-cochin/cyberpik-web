@@ -1,5 +1,5 @@
 import React from 'react';
-import { GALLERY, SIGN_IN } from '../../../config/url-constants';
+import { PHOTO_DETAILS, SIGN_IN } from '../../../config/url-constants';
 import { axiosToken } from '../../../config/axios-config';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { photoDetailsModifyValidationSchema } from '../../shared/validationSchemas';
@@ -11,10 +11,12 @@ const ModifyModal = ({imageId}) => {
     const history = useHistory();
 
 
-    const submit = () => {
-        axiosToken.patch('/images/' + imageId)
-        .then(
-            window.location.replace(GALLERY)
+    const submit = (values) => {
+        console.log(values);
+        axiosToken.patch('/images/details/' + imageId, {
+            title: values.title
+        }).then(
+            window.location.replace(PHOTO_DETAILS)
         ).catch(err => {
             logout()
             history.push(SIGN_IN)
@@ -33,9 +35,11 @@ const ModifyModal = ({imageId}) => {
                         onSubmit={submit}
                         validationSchema={photoDetailsModifyValidationSchema}>
                             <Form className="theme-form">
-                            <Field type="text" name="title" className="form-control" placeholder="Title"></Field>
-                            <ErrorMessage componant="small" name="username" className="ml-5 mt-0 mb-3" />
-                            <button type="submit" className="btn btn-custom theme-color mt-2" data-dismiss="modal">Submit</button>
+                                <Field type="text" name="title" className="form-control" placeholder="Title"></Field>
+                                <ErrorMessage componant="small" name="username" className="ml-5 mt-0 mb-3" />
+                                <div className="form-button text-center">
+                                    <button type="submit" className="btn btn-custom theme-color mt-2">Submit</button>
+                                </div>
                             </Form>
                         </Formik>
                     </div>

@@ -54,7 +54,8 @@ const PhotoDetails = () => {
   };
 
   const getImageDetails = () => {
-    axiosToken.get("/images/details/" + imageId).then((resp) => {
+    axiosToken.get("/images/details/" + imageId)
+    .then((resp) => {
       setImageTitle(resp.data.title);
     }).catch(err => {
       logout()

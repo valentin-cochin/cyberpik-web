@@ -7,6 +7,7 @@ const DeleteModal = ({imageId}) => {
     const handleClick = () => {
         axiosToken.delete('/images/' + imageId)
         .then(
+            window.location.reload,
             window.location.replace(GALLERY)
         )
     }
