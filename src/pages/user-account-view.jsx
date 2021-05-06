@@ -15,6 +15,7 @@ const UserAccountView = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [location, setLocation] = useState("")
+    const [profilePhotoId, setProfilePhotoId] = useState(0)
     const [profilePhoto, setProfilePhoto] = useState({})
 
     useEffect(() => {
@@ -32,12 +33,31 @@ const UserAccountView = () => {
             setName(resp.data.userName)
             setEmail(resp.data.email)
             setLocation(resp.data.location)
-            setProfilePhoto(resp.data.profilePhoto)
+            getProfilePicture(resp.data.profilePhoto.photoId)
         }).catch(err => {
             logout()
             history.push(SIGN_IN)
         })
     }
+
+    const getProfilePicture = (id) => {
+        if(id !== 0){
+            axiosToken
+            .get("/images/" + id, { responseType: "arraybuffer" })
+            .then((response) => {
+                const base64 = btoa(
+                new Uint8Array(response.data).reduce(
+                    (data, byte) => data + String.fromCharCode(byte),
+                    ""
+                )
+                );
+                setProfilePhoto({ source: "data:;base64," + base64 });
+            }).catch(err => {
+                logout()
+                history.push(SIGN_IN)
+            })
+        }
+      };
 
 
     return (
@@ -67,7 +87,7 @@ const UserAccountView = () => {
                 <div className="review-box">
                     <div id="overlay theme-form">
                         <div className="mx-auto image mb-5">
-                            <img src={(profilePhoto === null) ? notFound : profilePhoto.photoUrl} className="image" alt="profile_picture" />
+                            <img src={(profilePhoto === null) ? notFound : profilePhoto.source} className="image" alt="profile_picture" />
                         </div>
                         <br />
                         <h2 className="mb-4">{name}</h2>

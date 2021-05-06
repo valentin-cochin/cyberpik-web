@@ -4,7 +4,6 @@ import { axiosToken } from "../../config/axios-config";
 import { GALLERY, SIGN_IN } from "../../config/url-constants";
 import DeleteModal from "../components/gallery/delete-modal";
 import ModifyModal from "../components/gallery/modify-modal";
-import ProfilePictureModal from "../components/gallery/profile-picture-modal";
 import Navbar from "../components/navbar";
 import { logout } from "../components/user_accounts/logout";
 
@@ -120,13 +119,11 @@ const PhotoDetails = () => {
               <ModifyModal imageId={imageId} />
               <button
                 type="submit"
-                data-toggle="modal"
-                data-target="#profile-picture"
                 className="btn btn-custom theme-color ml-5 mr-5 mt-5"
               >
-                Define as Profile Picture
+                Add an Effect
               </button>
-              <ProfilePictureModal imageId={imageId} />
+
               <button
                 type="submit"
                 data-toggle="modal"

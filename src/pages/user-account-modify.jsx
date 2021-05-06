@@ -9,7 +9,7 @@ import { ConfirmPassword } from '../components/user_accounts/confirm-password';
 import Location from '../components/user_accounts/location';
 import { EnableNewsletter } from '../components/user_accounts/enable-newsletter';
 import { Link } from 'react-router-dom';
-import { HOME_PAGE, PROFILE, SIGN_IN } from '../../config/url-constants';
+import { GALLERY, HOME_PAGE, PROFILE, PROFILE_PICTURE, SIGN_IN } from '../../config/url-constants';
 import { axiosToken } from '../../config/axios-config';
 import { logout } from '../components/user_accounts/logout';
 
@@ -73,11 +73,15 @@ const UserAccountModify = () => {
                             <div className="form-button text-center">
                                 <button type="submit" className="btn btn-custom theme-color">Submit</button>
                             </div>
-                            <br />
                         </Form>
                     </Formik>
+                    <br />
                     <div className="form-button text-center">
-                        <button className="btn btn-custom theme-color"><Link className="text-white" to={HOME_PAGE}>Go back to the home page</Link></button>
+                        <button className="btn btn-custom theme-color"><Link className="text-white" to={PROFILE_PICTURE}>Modify your profile picture</Link></button>
+                    </div>
+                    <br />
+                    <div className="form-button text-center">
+                        <button className="btn btn-custom theme-color"><Link className="text-white" to={PROFILE}>Cancel</Link></button>
                     </div>
                 </div>
             </div>
