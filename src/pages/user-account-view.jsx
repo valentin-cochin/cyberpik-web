@@ -15,7 +15,6 @@ const UserAccountView = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [location, setLocation] = useState("")
-    const [profilePhotoId, setProfilePhotoId] = useState(0)
     const [profilePhoto, setProfilePhoto] = useState({})
 
     useEffect(() => {
