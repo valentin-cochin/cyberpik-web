@@ -7,9 +7,9 @@ export const PhotosDisplay = ({ imageId }) => {
     const history = useHistory()
     const [image, setImage] = useState(0);
 
-  useEffect(() => {
-    getImage(imageId);
-  }, []);
+    useEffect(() => {
+      getImage(imageId);
+  }, [imageId]);
 
   const getImage = (imageId) => {
     if (imageId !== null)

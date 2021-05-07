@@ -8,7 +8,7 @@ export const PhotosList = ({imagesId}) => {
             <div className="row blog-list">
                 {imagesId.map((imageId, index) => {
                     return(
-                        <PhotosDisplay key={index} imageId={imageId}/>
+                        <PhotosDisplay key={index} imageId={imageId} />
                     )
                 })}
             </div>
