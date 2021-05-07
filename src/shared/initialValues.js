@@ -21,3 +21,7 @@ export const signUpInitialValues = {
     profile_picture : {},
     enableNewsletter: false
  }
+
+ export const photoDetailsModifyInitialValues = {
+     title: ""
+ }

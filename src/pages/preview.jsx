@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { BACK_END_URL, DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
+import { axiosToken } from '../../config/axios-config';
+import { DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
 
 
 const Preview = () => {
@@ -31,9 +31,8 @@ const Preview = () => {
     })
 
     useEffect(() => {
-        if(orignalImageId !== null)
-        axios.get(
-          BACK_END_URL + "/images/" + orignalImageId,
+        if(orignalImageId !== 0)
+        axiosToken.get("/images/" + orignalImageId,
           { responseType: 'arraybuffer' },
         )
         .then(response => {
