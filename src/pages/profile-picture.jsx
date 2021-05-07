@@ -40,8 +40,7 @@ const ProfilePicture = () => {
             "Content-Type": "multipart/form-data",
           },
         })
-        .then((response) => {
-          console.log(response.data);
+        .then((resp) => {
           history.push(PROFILE);
         })
         .catch((err) => {
@@ -73,7 +72,7 @@ const ProfilePicture = () => {
                   style={{ fontSize: "10rem", color: "#777777" }}
                 ></i>
                 <div className="col-lg-8 offset-lg-2">
-                  <h2>Import your image</h2>
+                  <h2>Import your profile picture</h2>
                 </div>
                 <Dropzone
                   onDrop={onDrop}

@@ -4,7 +4,8 @@ import { PhotosList } from '../components/gallery/photos-list';
 import Navbar from '../components/navbar';
 import { logout } from '../components/user_accounts/logout';
 import { useHistory } from 'react-router';
-import { SIGN_IN } from '../../config/url-constants';
+import { IMPORT, SIGN_IN } from '../../config/url-constants';
+import { Link } from 'react-router-dom';
 
 
 
@@ -12,7 +13,7 @@ const Gallery = () => {
 
     const history = useHistory()
 
-    const [imagesId, setImagesId] = useState(0)
+    const [imagesId, setImagesId] = useState([])
 
     useEffect(() => {
         setTimeout(function () {
@@ -52,7 +53,8 @@ const Gallery = () => {
 
                         <div className="container">
                             <div className="row">
-                                {imagesId !== 0 && <PhotosList imagesId={imagesId}/>}
+                                {imagesId.length !== 0 && <PhotosList imagesId={imagesId}/>}
+                                {imagesId.length === 0 && <Link className="col-md-12 text-center" to={IMPORT}><h1>ADD YOUR FIRST PHOTO</h1></Link>}
                             </div>
                         </div>
                     </section>

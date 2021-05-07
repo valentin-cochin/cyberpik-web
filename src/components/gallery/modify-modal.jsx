@@ -12,11 +12,12 @@ const ModifyModal = ({imageId}) => {
 
 
     const submit = (values) => {
-        console.log(values);
         axiosToken.patch('/images/details/' + imageId, {
             title: values.title
         }).then(
-            window.location.replace(PHOTO_DETAILS)
+            setTimeout(() => {
+                window.location.replace(PHOTO_DETAILS)
+            }, 500)
         ).catch(err => {
             logout()
             history.push(SIGN_IN)
