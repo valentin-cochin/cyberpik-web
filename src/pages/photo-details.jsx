@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { axiosToken } from "../../config/axios-config";
-import { GALLERY, SIGN_IN } from "../../config/url-constants";
+import { EFFECT, GALLERY, SIGN_IN } from "../../config/url-constants";
 import DeleteModal from "../components/gallery/delete-modal";
 import ModifyModal from "../components/gallery/modify-modal";
 import Navbar from "../components/navbar";
@@ -31,9 +31,9 @@ const PhotoDetails = () => {
 
   useEffect(() => {
     if (imageId !== 0) {
-    getImage();
-    getImageDetails();
-  }
+      getImage();
+      getImageDetails();
+    }
   }, [imageId]);
 
   const getImage = () => {
@@ -47,21 +47,32 @@ const PhotoDetails = () => {
           )
         );
         setImage({ source: "data:;base64," + base64 });
-      }).catch(err => {
-        logout()
-        history.push(SIGN_IN)
-    });
+      })
+      .catch((err) => {
+        logout();
+        history.push(SIGN_IN);
+      });
   };
 
   const getImageDetails = () => {
-    axiosToken.get("/images/details/" + imageId)
-    .then((resp) => {
-      setImageTitle(resp.data.title);
-    }).catch(err => {
-      logout()
-      history.push(SIGN_IN)
-  })
+    axiosToken
+      .get("/images/details/" + imageId)
+      .then((resp) => {
+        setImageTitle(resp.data.title);
+      })
+      .catch((err) => {
+        logout();
+        history.push(SIGN_IN);
+      });
   };
+
+  const goToEffect = () => {
+  	if(imageId !== 0) {
+    history.push({
+      pathname: EFFECT,
+      state: { imageId: imageId }
+	})
+  }};
 
   return (
     <div>
@@ -113,17 +124,17 @@ const PhotoDetails = () => {
                 data-toggle="modal"
                 data-target="#modify"
                 className="btn btn-custom theme-color mt-5"
-                >
+              >
                 Modify
               </button>
               <ModifyModal imageId={imageId} />
               <button
                 type="submit"
                 className="btn btn-custom theme-color ml-5 mr-5 mt-5"
+                onClick={goToEffect}
               >
                 Add an Effect
               </button>
-
               <button
                 type="submit"
                 data-toggle="modal"
