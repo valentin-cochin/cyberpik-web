@@ -33,17 +33,21 @@ const UserAccountView = () => {
             setName(resp.data.userName)
             setEmail(resp.data.email)
             setLocation(resp.data.location)
-            getProfilePicture(resp.data.profilePhoto.photoId)
+            getProfilePicture(resp.data.profilePhoto)
         }).catch(err => {
-            logout()
-            history.push(SIGN_IN)
+            if(err.response.status === 401) {
+                logout()
+                history.push(SIGN_IN)
+            }else{
+                console.log(err.response);
+            }
         })
     }
 
     const getProfilePicture = (id) => {
-        if(id !== 0){
+        if(id !== null){
             axiosToken
-            .get("/images/" + id, { responseType: "arraybuffer" })
+            .get("/images/" + id.photoId, { responseType: "arraybuffer" })
             .then((response) => {
                 const base64 = btoa(
                 new Uint8Array(response.data).reduce(
@@ -53,8 +57,12 @@ const UserAccountView = () => {
                 );
                 setProfilePhoto({ source: "data:;base64," + base64 });
             }).catch(err => {
-                logout()
-                history.push(SIGN_IN)
+                if(err.response.status === 401) {
+                    logout()
+                    history.push(SIGN_IN)
+                }else{
+                    console.log(err.response);
+                }
             })
         }
       };
