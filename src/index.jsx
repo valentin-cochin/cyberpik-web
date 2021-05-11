@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { DOWNLOAD, EFFECT, FORGET_PASSWORD, GALLERY, GENERAL_CONDITIONS, HOME_PAGE, IMPORT, PHOTO_DETAILS, PREVIEW, PROFILE, PROFILE_MANAGER, PROFILE_PICTURE, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP } from '../config/url-constants';
+import { DOWNLOAD, EFFECT, FORGET_PASSWORD, GALLERY, GENERAL_CONDITIONS, HOME_PAGE, IMPORT, PHOTO_DETAILS, PREVIEW, PROFILE, PROFILE_MANAGER, PROFILE_PICTURE, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP, UNSUBSCRIBE } from '../config/url-constants';
 import './index.scss';
 import { default as NoMatch } from './pages/404';
 import Download from './pages/download';
@@ -17,6 +17,7 @@ import ProfilePicture from './pages/profile-picture';
 import ProjectPresentation from './pages/project-presentation';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
+import Unsubscribe from './pages/unsubscribe';
 import UserAccountModify from './pages/user-account-modify';
 import UserAccountView from './pages/user-account-view';
 import registerServiceWorker from './registerServiceWorker';
@@ -41,6 +42,7 @@ class Root extends React.Component {
                     <Route path={`${process.env.PUBLIC_URL}${PROJECT_PRESENTATION}`} component={ProjectPresentation} />
                     <Route path={`${process.env.PUBLIC_URL}${SIGN_IN}`} component={SignIn} />
                     <Route path={`${process.env.PUBLIC_URL}${SIGN_UP}`} component={SignUp} />
+                    <Route path={`${process.env.PUBLIC_URL}${UNSUBSCRIBE}`} component={Unsubscribe} />
                     <Route component={NoMatch} />
                 </Switch>
             </BrowserRouter>
