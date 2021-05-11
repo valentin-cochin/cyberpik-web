@@ -3,8 +3,8 @@ import { axiosToken } from '../../config/axios-config';
 import { PhotosList } from '../components/gallery/photos-list';
 import Navbar from '../components/navbar';
 import { logout } from '../components/user_accounts/logout';
-import { useHistory, useLocation } from 'react-router';
-import { GALLERY, IMPORT, SIGN_IN } from '../../config/url-constants';
+import { useHistory } from 'react-router';
+import { IMPORT, SIGN_IN } from '../../config/url-constants';
 import { Link } from 'react-router-dom';
 
 
@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 const Gallery = () => {
 
     const history = useHistory()
-    const location = useLocation()
 
     const [imagesId, setImagesId] = useState([])
     const nbOfImagesPerPage = 3
@@ -33,8 +32,8 @@ const Gallery = () => {
             setNbOfPages(Math.ceil(resp.data.length / nbOfImagesPerPage))
         }).catch(err => {
             console.log(err);
-            // logout()
-            // history.push(SIGN_IN)
+            logout()
+            history.push(SIGN_IN)
         })
     },[actualPage])
 
