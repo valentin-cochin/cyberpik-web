@@ -9,9 +9,8 @@ import { UserName } from '../components/user_accounts/username';
 import { Email } from '../components/user_accounts/email';
 import { Password } from '../components/user_accounts/password';
 import { ConfirmPassword } from '../components/user_accounts/confirm-password';
-import { EnableNewsletter } from '../components/user_accounts/enable-newsletter';
 import { TermsConditions } from '../components/user_accounts/terms-conditions';
-import { HOME_PAGE, SIGN_IN, BACK_END_USER_ACCOUNT } from '../../config/url-constants'
+import { HOME_PAGE, SIGN_IN, BACK_END_URL } from '../../config/url-constants'
 
 
 
@@ -25,11 +24,10 @@ const SignUp = () => {
    })
 
    const submit = (values) => {
-      axios.post(BACK_END_USER_ACCOUNT, {
+      axios.post(BACK_END_URL + "/user_accounts/", {
          userName: values.username,
          email: values.email,
          password: values.password,
-         enableNewsletter: values.enableNewsletter
       }).then(res => {
          history.push(HOME_PAGE);
       }).catch(err => {
@@ -59,7 +57,6 @@ const SignUp = () => {
                      <Email />
                      <Password />
                      <ConfirmPassword />
-                     <EnableNewsletter />
                      <TermsConditions />
                      <div id="error_message_sign_up" className="text-center mt-0 mb-3"></div>
                      <div className="form-button text-center">

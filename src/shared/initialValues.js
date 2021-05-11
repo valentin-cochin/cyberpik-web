@@ -3,7 +3,6 @@ export const signUpInitialValues = {
     email: "",
     password: "",
     confirm_password: "",
-    enableNewsletter: false,
     conditions: false
  }
 
@@ -19,9 +18,12 @@ export const signUpInitialValues = {
     confirm_password: "",
     location: "",
     profile_picture : {},
-    enableNewsletter: false
  }
 
  export const photoDetailsModifyInitialValues = {
      title: ""
+ }
+
+ export const subscribeUnsubscribeInitialValues = {
+     email: ""
  }

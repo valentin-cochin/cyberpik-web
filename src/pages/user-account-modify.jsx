@@ -7,7 +7,6 @@ import { Email } from "../components/user_accounts/email";
 import { Password } from "../components/user_accounts/password";
 import { ConfirmPassword } from "../components/user_accounts/confirm-password";
 import Location from "../components/user_accounts/location";
-import { EnableNewsletter } from "../components/user_accounts/enable-newsletter";
 import { Link } from "react-router-dom";
 import { PROFILE, PROFILE_PICTURE, SIGN_IN } from "../../config/url-constants";
 import { axiosToken } from "../../config/axios-config";
@@ -30,7 +29,6 @@ const UserAccountModify = () => {
         email: values.email,
         password: values.password,
         location: location,
-        enableNewsletter: values.enableNewsletter,
       })
       .then((res) => {
         if (values.username !== "") {
@@ -78,7 +76,6 @@ const UserAccountModify = () => {
                 <Password />
                 <ConfirmPassword />
                 <Location setLocation={setLocation} />
-                <EnableNewsletter />
                 <div
                   id="error_message_user_account_modify"
                   className="text-center mt-0 mb-3"

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Form, Formik } from 'formik';
-import { BACK_END_USER_ACCOUNT, FORGET_PASSWORD, HOME_PAGE, SIGN_UP } from '../../config/url-constants';
+import { BACK_END_URL, FORGET_PASSWORD, HOME_PAGE, SIGN_UP } from '../../config/url-constants';
 import { UserName } from '../components/user_accounts/username';
 import { Password } from '../components/user_accounts/password';
 import { signInInitialValues } from '../shared/initialValues';
@@ -26,7 +26,7 @@ const SignIn = () => {
    }
 
    const submit = (values) => {
-      axios.post(BACK_END_USER_ACCOUNT + 'login', {
+      axios.post(BACK_END_URL + "/user_accounts/login", {
          userName: values.username,
          password: values.password
       }).then(res => {

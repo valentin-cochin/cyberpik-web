@@ -8,7 +8,6 @@ export const signUpValidationSchema = yup.object().shape({
     email: yup.string().required("e-mail is required").email("e-mail is not valid"),
     password: yup.string().required("password is required").password(),
     confirm_password: yup.string().required("confirmation password is required").oneOf([yup.ref("password"), null], "passwords must be the same"),
-    enableNewsletter: yup.bool().notRequired(),
     conditions: yup.bool().test("consent", "you have to accept our terms and conditions", value => value === true).required("you have to accept our terms and conditions")
 })
 
@@ -22,11 +21,13 @@ export const userAccountModifyValidationSchema = yup.object().shape({
     email: yup.string().email("e-mail is not valid"),
     password: yup.string().password(),
     confirm_password: yup.string().oneOf([yup.ref("password"), null], "passwords must be the same"),
-    city: yup.string().notRequired(),
-    country: yup.string().notRequired(),
-    enableNewsletter: yup.bool().notRequired()
+    location: yup.string().notRequired()
 })
 
 export const photoDetailsModifyValidationSchema = yup.object().shape({
-    title: yup.string().min(1, "title must be at least 1 character").max(50, "title must have maximum 50 characters")
+    title: yup.string().min(1, "title must be at least 1 character").max(20, "title must have maximum 20 characters")
+})
+
+export const subscribeUnsubscribeValidationSchema = yup.object().shape({
+    email: yup.string().required("e-mail is required").email("e-mail is not valid")
 })

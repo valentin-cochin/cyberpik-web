@@ -1,8 +1,6 @@
 // URL to access to the API User
 export const BACK_END_URL = 'http://localhost:8080/cyberpik'
 
-// URL to access to the different API User controllers
-export const BACK_END_USER_ACCOUNT = BACK_END_URL + '/user_accounts/'
 
 // URL to navigate between the different front pages
 export const DOWNLOAD = '/download'
@@ -21,6 +19,7 @@ export const PROJECT_PRESENTATION = '/project-presentation'
 export const SIGN_IN = '/sign-in'
 export const SIGN_UP = '/sign-up'
 export const THANK_YOU = '/thank-you'
+export const UNSUBSCRIBE = '/unsubscribe'
 
 // Other URLs
 export const GITHUB_ANTOINE = 'https://github.com/AntoineFran'
