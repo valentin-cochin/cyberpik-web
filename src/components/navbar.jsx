@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GALLERY, GENERAL_CONDITIONS, HOME_PAGE, PROFILE, PROJECT_PRESENTATION, SIGN_IN } from '../../config/url-constants';
+import { GALLERY, GENERAL_CONDITIONS, HOME_PAGE, PROFILE, PROJECT_PRESENTATION, SIGN_IN } from '../shared/url-constants';
 import { logout } from './user_accounts/logout';
 
 const Navbar = () => {
@@ -21,7 +21,7 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light theme-nav fixed-top">
             <div id="navbar-main" className="container">
-                <a className="navbar-brand" href={HOME_PAGE}><img src="assets/images/logo.png" alt="logo" /></a>
+                <a className="navbar-brand" href={HOME_PAGE}><img src="../assets/images/logo.png" alt="logo" /></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { DOWNLOAD, EFFECT, FORGET_PASSWORD, GALLERY, GENERAL_CONDITIONS, HOME_PAGE, IMPORT, PHOTO_DETAILS, PREVIEW, PROFILE, PROFILE_MANAGER, PROFILE_PICTURE, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP, UNSUBSCRIBE } from '../config/url-constants';
+import { DOWNLOAD, EFFECT, FORGET_PASSWORD, GALLERY, GENERAL_CONDITIONS, HOME_PAGE, IMPORT, PHOTO_DETAILS, PREVIEW, PROFILE, PROFILE_MANAGER, PROFILE_PICTURE, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP, UNSUBSCRIBE } from './shared/url-constants';
 import './index.scss';
 import { default as NoMatch } from './pages/404';
 import Download from './pages/download';

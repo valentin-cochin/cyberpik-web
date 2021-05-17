@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router";
-import { axiosToken } from "../../config/axios-config";
-import { EFFECT, GALLERY, SIGN_IN } from "../../config/url-constants";
+import { axiosToken } from "../shared/axios-config";
+import { EFFECT, GALLERY, SIGN_IN } from "../shared/url-constants";
 import DeleteModal from "../components/gallery/delete-modal";
 import ModifyModal from "../components/gallery/modify-modal";
 import Navbar from "../components/navbar";
@@ -93,10 +93,10 @@ const PhotoDetails = () => {
         <section className="authentication-form download">
           <div className="innerpage-decor">
             <div className="innerpage-circle1">
-              <img src="assets/images/Testimonial2.png" alt="" />
+              <img src="../assets/images/Testimonial2.png" alt="" />
             </div>
             <div className="innerpage-circle2">
-              <img src="assets/images/Testimonial1.png" alt="" />
+              <img src="../assets/images/Testimonial1.png" alt="" />
             </div>
           </div>
           <div className="col-md-6">

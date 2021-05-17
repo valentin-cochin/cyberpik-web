@@ -4,7 +4,7 @@ import { Email } from "./user_accounts/email";
 import { subscribeUnsubscribeInitialValues } from "../shared/initialValues";
 import { subscribeUnsubscribeValidationSchema } from "../shared/validationSchemas";
 import axios from "axios";
-import { BACK_END_URL } from "../../config/url-constants";
+import { BACK_END_URL } from "../shared/url-constants";
 
 const Subscribe = () => {
   useEffect(() => {
@@ -33,7 +33,7 @@ const Subscribe = () => {
         <div className="row">
           <div className="col-md-8 offset-md-2">
             <div className="footer-text">
-              <img src="assets/images/email.png" alt="email" />
+              <img src="../assets/images/email.png" alt="email" />
               <h2 className="title text-center md-margin-top">
                 subscribe to our <span>newsletter</span>
               </h2>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {  PHOTO_DETAILS } from "../../../config/url-constants";
+import { PHOTO_DETAILS } from "../../shared/url-constants";
 import { useHistory } from "react-router";
-import { axiosToken } from "../../../config/axios-config";
+import { axiosToken } from "../../shared/axios-config";
 
 export const PhotosDisplay = ({ imageId }) => {
     const history = useHistory()

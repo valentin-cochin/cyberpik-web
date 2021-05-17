@@ -12,8 +12,8 @@ class ForgetPassword extends React.Component {
       return (
          <section className="authentication-form">
             <div className="innerpage-decor">
-               <div className="innerpage-circle1"><img src="assets/images/Testimonial2.png" alt="" /></div>
-               <div className="innerpage-circle2"><img src="assets/images/Testimonial1.png" alt="" /></div>
+               <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
+               <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
             </div>
             <div>
                <h2 className="title text-center">RESET YOUR<span> PASSWORD</span></h2>

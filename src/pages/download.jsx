@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../../config/url-constants';
+import { GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE } from '../shared/url-constants';
 
 const Download = () => {
 
@@ -13,14 +13,14 @@ const Download = () => {
     return (
         <section className="authentication-form download">
             <div className="innerpage-decor">
-                <div className="innerpage-circle1"><img src="assets/images/Testimonial2.png" alt="" /></div>
-                <div className="innerpage-circle2"><img src="assets/images/Testimonial1.png" alt="" /></div>
+                <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
+                <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
             </div>
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="text-center">
-                            <img src="assets/images/down.png" className="img-fluid downlod-img" alt="" />
+                            <img src="../assets/images/down.png" className="img-fluid downlod-img" alt="" />
                             <div className="col-lg-8 offset-lg-2">
                                 <h2>Your download should begin automatically</h2>
                             </div>

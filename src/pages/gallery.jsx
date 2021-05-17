@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { axiosToken } from '../../config/axios-config';
+import { axiosToken } from '../shared/axios-config';
 import { PhotosList } from '../components/gallery/photos-list';
 import Navbar from '../components/navbar';
 import { logout } from '../components/user_accounts/logout';
 import { useHistory } from 'react-router';
-import { IMPORT, SIGN_IN } from '../../config/url-constants';
+import { IMPORT, SIGN_IN } from '../shared/url-constants';
 import { Link } from 'react-router-dom';
 
 
@@ -79,8 +79,8 @@ const Gallery = () => {
 
                     <section className="authentication-form download mt-5">
                         <div className="innerpage-decor">
-                            <div className="innerpage-circle1"><img src="assets/images/Testimonial2.png" alt="" /></div>
-                            <div className="innerpage-circle2"><img src="assets/images/Testimonial1.png" alt="" /></div>
+                            <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
+                            <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
                         </div>
 
                         <div className="container">

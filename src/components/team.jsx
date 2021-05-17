@@ -44,7 +44,7 @@ class Team extends React.Component {
                <div className="team-block">
                   <div className="team-box">
                      <div className="team-avtar">
-                        <img src={`assets/images/avatar/${val.photo}`} alt="" />
+                        <img src={`../assets/images/avatar/${val.photo}`} alt="" />
                      </div>
                      <div className="team-text">
                         <h3>{val.name}</h3>
@@ -65,9 +65,9 @@ class Team extends React.Component {
       return (
          <section id="team" className="team">
             <div className="team-decor">
-               <div className="team-circle1"><img src="assets/images/team1.png" alt="" /></div>
-               <div className="team-circle2"><img src="assets/images/team3.png" alt="" /></div>
-               <div className="team-circle3"><img src="assets/images/team.png" alt="" /></div>
+               <div className="team-circle1"><img src="../assets/images/team1.png" alt="" /></div>
+               <div className="team-circle2"><img src="../assets/images/team3.png" alt="" /></div>
+               <div className="team-circle3"><img src="../assets/images/team.png" alt="" /></div>
             </div>
             <div className="container">
                <div className="row ">

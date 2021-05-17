@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { axiosToken } from '../../config/axios-config';
-import { DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
+import { axiosToken } from '../shared/axios-config';
+import { DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../shared/url-constants';
 
 
 const Preview = () => {
@@ -69,8 +69,8 @@ const Preview = () => {
     return (
         <section className="authentication-form download">
             <div className="innerpage-decor">
-                <div className="innerpage-circle1"><img src="assets/images/Testimonial2.png" alt="" /></div>
-                <div className="innerpage-circle2"><img src="assets/images/Testimonial1.png" alt="" /></div>
+                <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
+                <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
             </div>
             <div className="container">
                 <div className="row">

@@ -11,8 +11,8 @@ class PageNotFound extends React.Component {
     return (
       <div className="authentication-form not-found">
         <div className="innerpage-decor">
-          <div className="innerpage-circle1"><img src="assets/images/Testimonial2.png" alt="" /></div>
-          <div className="innerpage-circle2"><img src="assets/images/Testimonial1.png" alt="" /></div>
+          <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
+          <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
         </div>
         <div className="text-center">
           <h2 className="error-font">4<span>0</span>4</h2>

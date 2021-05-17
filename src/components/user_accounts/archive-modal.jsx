@@ -1,6 +1,6 @@
 import React from 'react';
-import { HOME_PAGE } from '../../../config/url-constants';
-import { axiosToken } from '../../../config/axios-config';
+import { HOME_PAGE } from '../../shared/url-constants';
+import { axiosToken } from '../../shared/axios-config';
 import { logout } from './logout';
 
 const ArchiveModal = () => {

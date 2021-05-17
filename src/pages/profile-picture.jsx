@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import Dropzone from "react-dropzone";
 import { useHistory } from "react-router-dom";
-import { PROFILE } from "../../config/url-constants";
-import { axiosToken } from "../../config/axios-config";
-import { SIGN_IN } from "../../config/url-constants";
+import { axiosToken } from "../shared/axios-config";
+import { SIGN_IN, PROFILE } from "../shared/url-constants";
 import { logout } from "../components/user_accounts/logout";
 import Navbar from "../components/navbar";
 
@@ -56,10 +55,10 @@ const ProfilePicture = () => {
       <section className="authentication-form download">
         <div className="innerpage-decor">
           <div className="innerpage-circle1">
-            <img src="assets/images/Testimonial2.png" alt="" />
+            <img src="../assets/images/Testimonial2.png" alt="" />
           </div>
           <div className="innerpage-circle2">
-            <img src="assets/images/Testimonial1.png" alt="" />
+            <img src="../assets/images/Testimonial1.png" alt="" />
           </div>
         </div>
         <div className="container">

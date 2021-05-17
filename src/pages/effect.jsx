@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT, PREVIEW } from '../../config/url-constants';
+import { GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT, PREVIEW } from '../shared/url-constants';
 import EffectCarousel from '../components/effect-carousel';
 
 
@@ -39,8 +39,8 @@ const Effect = () => {
     return (
         <section className="authentication-form download">
             <div className="innerpage-decor">
-                <div className="innerpage-circle1"><img src="assets/images/Testimonial2.png" alt="" /></div>
-                <div className="innerpage-circle2"><img src="assets/images/Testimonial1.png" alt="" /></div>
+                <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
+                <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
             </div>
             <div className="container">
                 <div className="row">
