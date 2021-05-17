@@ -1,6 +1,6 @@
 import React from 'react';
-import { GALLERY } from '../../../config/url-constants';
-import { axiosToken } from '../../../config/axios-config';
+import { GALLERY } from '../../shared/url-constants';
+import { axiosToken } from '../../shared/axios-config';
 
 const DeleteModal = ({imageId}) => {
 

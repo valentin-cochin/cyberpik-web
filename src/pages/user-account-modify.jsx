@@ -8,8 +8,8 @@ import { Password } from "../components/user_accounts/password";
 import { ConfirmPassword } from "../components/user_accounts/confirm-password";
 import Location from "../components/user_accounts/location";
 import { Link } from "react-router-dom";
-import { PROFILE, PROFILE_PICTURE, SIGN_IN } from "../../config/url-constants";
-import { axiosToken } from "../../config/axios-config";
+import { PROFILE, PROFILE_PICTURE, SIGN_IN } from "../shared/url-constants";
+import { axiosToken } from "../shared/axios-config";
 import { logout } from "../components/user_accounts/logout";
 import Navbar from "../components/navbar";
 
@@ -55,10 +55,10 @@ const UserAccountModify = () => {
       <section className="authentication-form">
         <div className="innerpage-decor">
           <div className="innerpage-circle1">
-            <img src="assets/images/Testimonial2.png" alt="" />
+            <img src="../assets/images/Testimonial2.png" alt="" />
           </div>
           <div className="innerpage-circle2">
-            <img src="assets/images/Testimonial1.png" alt="" />
+            <img src="../assets/images/Testimonial1.png" alt="" />
           </div>
         </div>
 

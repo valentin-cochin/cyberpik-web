@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Form, Formik } from 'formik';
-import { BACK_END_URL, FORGET_PASSWORD, HOME_PAGE, SIGN_UP } from '../../config/url-constants';
+import { BACK_END_URL, FORGET_PASSWORD, HOME_PAGE, SIGN_UP } from '../shared/url-constants';
 import { UserName } from '../components/user_accounts/username';
 import { Password } from '../components/user_accounts/password';
 import { signInInitialValues } from '../shared/initialValues';
@@ -43,8 +43,8 @@ const SignIn = () => {
    return (
       <section className="authentication-form">
          <div className="innerpage-decor">
-            <div className="innerpage-circle1"><img src="assets/images/Testimonial2.png" alt="" /></div>
-            <div className="innerpage-circle2"><img src="assets/images/Testimonial1.png" alt="" /></div>
+            <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
+            <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
          </div>
          <div>
             <h2 className="title text-center"><span>Login</span></h2>

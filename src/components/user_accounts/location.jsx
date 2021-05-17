@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { GOOGLE_PLACE_API_TOKEN } from './../../../config/api-tokens'
+import { GOOGLE_PLACE_API_TOKEN } from '../../shared/api-tokens'
 
 const Location = ({setLocation, handleChange }) => {
     let autoComplete;

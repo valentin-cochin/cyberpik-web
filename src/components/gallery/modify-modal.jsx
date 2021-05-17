@@ -1,6 +1,6 @@
 import React from 'react';
-import { PHOTO_DETAILS, SIGN_IN } from '../../../config/url-constants';
-import { axiosToken } from '../../../config/axios-config';
+import { PHOTO_DETAILS, SIGN_IN } from '../../shared/url-constants';
+import { axiosToken } from '../../shared/axios-config';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { photoDetailsModifyValidationSchema } from '../../shared/validationSchemas';
 import { photoDetailsModifyInitialValues } from '../../shared/initialValues';

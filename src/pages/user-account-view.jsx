@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { axiosToken } from '../../config/axios-config';
-import { PROFILE_MANAGER, SIGN_IN } from '../../config/url-constants';
+import { axiosToken } from '../shared/axios-config';
+import { PROFILE_MANAGER, SIGN_IN } from '../shared/url-constants';
 import Navbar from '../components/navbar';
 import ArchiveModal from '../components/user_accounts/archive-modal';
 import DeleteModal from '../components/user_accounts/delete-modal';
 import { logout } from '../components/user_accounts/logout';
-import notFound from "./../../public/assets/images/CyberPik-logo.png";
+import notFound from "../assets/images/CyberPik-logo.png";
 
 const UserAccountView = () => {
 
@@ -86,9 +86,9 @@ const UserAccountView = () => {
 
             <section id="team" className="team authentication-form">
                 <div className="team-decor">
-                    <div className="team-circle1"><img src="assets/images/team1.png" alt="" /></div>
-                    <div className="team-circle2"><img src="assets/images/team3.png" alt="" /></div>
-                    <div className="team-circle3"><img src="assets/images/team.png" alt="" /></div>
+                    <div className="team-circle1"><img src="../assets/images/team1.png" alt="" /></div>
+                    <div className="team-circle2"><img src="../assets/images/team3.png" alt="" /></div>
+                    <div className="team-circle3"><img src="../assets/images/team.png" alt="" /></div>
                 </div>
 
                 <div className="review-box">

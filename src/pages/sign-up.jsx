@@ -10,7 +10,7 @@ import { Email } from '../components/user_accounts/email';
 import { Password } from '../components/user_accounts/password';
 import { ConfirmPassword } from '../components/user_accounts/confirm-password';
 import { TermsConditions } from '../components/user_accounts/terms-conditions';
-import { HOME_PAGE, SIGN_IN, BACK_END_URL } from '../../config/url-constants'
+import { HOME_PAGE, SIGN_IN, BACK_END_URL } from '../shared/url-constants'
 
 
 
@@ -40,8 +40,8 @@ const SignUp = () => {
    return (
       <section className="authentication-form">
          <div className="innerpage-decor">
-            <div className="innerpage-circle1"><img src="assets/images/Testimonial2.png" alt="" /></div>
-            <div className="innerpage-circle2"><img src="assets/images/Testimonial1.png" alt="" /></div>
+            <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
+            <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
          </div>
 
          <div>
