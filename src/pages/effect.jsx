@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT, PREVIEW } from '../shared/url-constants';
 import EffectCarousel from '../components/effect-carousel';
+import { GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT, PREVIEW } from '../shared/url-constants';
 
 
 const Effect = () => {
@@ -23,7 +23,7 @@ const Effect = () => {
             setImageId(location.state.imageId)
             console.log("imageId is " + imageId)
         }
-    })
+    }, [location.state, history, imageId])
 
     const handleTransformButton = () => {
         history.push({
@@ -75,7 +75,7 @@ const Effect = () => {
                 </footer>
             </div>
         </section>
-    );
+    )
 }
 
 
