@@ -1,8 +1,7 @@
-import $ from 'jquery';
 import React, { useEffect } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 
-const EffectCarousel = (props) => {
+const EffectCarousel = ({handleChange}) => {
     const images =
         [
             { id: 0, title: 'synthwave-back', src: "../assets/images/effects/synthwave-back.jpg" },
@@ -25,20 +24,6 @@ const EffectCarousel = (props) => {
             document.querySelector(".loader-wrapper").style = "display: none"
         }, 1200);
     })
-
-    const handleChange = (property) => {
-        let currIndex = property.item.index
-        let slides = $(property.target).find(".owl-item")
-        let currSlide = slides.eq(currIndex)
-
-        slides.css('border', 'none')
-        currSlide.css('border', 'solid')
-
-        var alt = currSlide.find("img").attr('alt')
-
-        console.log('Image current is ' + alt)
-        props.updateEffectTitle(alt)
-    }
 
 
     return (

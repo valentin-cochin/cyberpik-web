@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import EffectCarousel from '../components/effect-carousel';
@@ -5,7 +6,7 @@ import { GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT, PREVIEW } from '../shared/url-
 
 
 const Effect = () => {
-    const [effectTitle, setEffectTitle] = useState(0);
+    let effectTitle
     const [imageId, setImageId] = useState(0);
     const location = useLocation()
     const history = useHistory()
@@ -35,6 +36,19 @@ const Effect = () => {
         })
     }
 
+    const handleChange = (property) => {
+        let currIndex = property.item.index
+        let slides = $(property.target).find(".owl-item")
+        let currSlide = slides.eq(currIndex)
+
+        slides.css('border', 'none')
+        currSlide.css('border', 'solid')
+
+        let alt = currSlide.find("img").attr('alt')
+
+        console.log('Image current is ' + alt)
+        effectTitle = alt
+    }
 
     return (
         <section className="authentication-form download">
@@ -50,7 +64,7 @@ const Effect = () => {
                             <div className="col-lg-8 offset-lg-2">
                                 <h2>Choose the effect</h2>
                             </div>
-                            <EffectCarousel  updateEffectTitle={setEffectTitle}/>
+                            <EffectCarousel  handleChange={handleChange}/>
                         </div>
                     </div>
                 </div>

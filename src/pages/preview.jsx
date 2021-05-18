@@ -32,7 +32,7 @@ const Preview = () => {
 
     useEffect(() => {
         if(orignalImageId !== 0)
-        axiosToken.get("/images/" + orignalImageId,
+        axiosToken.get("/effects/nst/" + orignalImageId + "?style=" + effectTitle,
           { responseType: 'arraybuffer' },
         )
         .then(response => {
@@ -44,7 +44,7 @@ const Preview = () => {
           )
           setTransformedImage({ source: "data:;base64," + base64 });
         })
-    }, [orignalImageId])
+    }, [orignalImageId, effectTitle])
 
     const handleEffectButton = () => {
         console.log(effectTitle)
