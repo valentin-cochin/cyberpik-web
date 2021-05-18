@@ -5,9 +5,10 @@ import OwlCarousel from 'react-owl-carousel';
 const EffectCarousel = (props) => {
     const images =
         [
-            { id: 0, title: 'item #1', src: "../assets/images/app/2.jpg" },
-            { id: 1, title: 'item #2', src: "../assets/images/app/3.jpg" },
-            { id: 2, title: 'item #5', src: "../assets/images/app/5.jpg" }
+            { id: 0, title: 'synthwave-back', src: "../assets/images/effects/synthwave-back.jpg" },
+            { id: 1, title: 'vaporwave-angel', src: "../assets/images/effects/vaporwave-angel.jpg" },
+            { id: 2, title: 'vaporwave-fluid', src: "../assets/images/effects/vaporwave-fluid.jpg" },
+            { id: 3, title: 'vaporwave-glitch_line', src: "../assets/images/effects/vaporwave-glitch_line.jpg" }
         ]
 
     const responsiveOptions = {
