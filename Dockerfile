@@ -18,8 +18,12 @@ RUN npm run build
 #STEP 2 : CREATE NGINX SERVER
 FROM nginx:alpine AS server
 
-COPY --from=build /app/build usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
 
-EXPOSE 80
+RUN rm -rf ./*
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY --from=build /app/build /usr/share/nginx/html
+
+COPY nginx.config /etc/nginx/conf.d/default.conf
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
