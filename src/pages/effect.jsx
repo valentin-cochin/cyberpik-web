@@ -7,7 +7,7 @@ import { GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT, PREVIEW } from '../shared/url-
 
 const Effect = () => {
     let effectTitle
-    const [imageId, setImageId] = useState(0);
+    const [imageId, setImageId] = useState(0)
     const location = useLocation()
     const history = useHistory()
 
