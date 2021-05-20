@@ -11,7 +11,7 @@ const Preview = () => {
     const location = useLocation()
     const history = useHistory()
 
-    let isImgReceived = (typeof (transformedImage) !== 'undefined' && transformedImage != null)
+    let isImgReceived = (transformedImage !== 0)
 
     console.log("imageId from Preview view is " + orignalImageId)
 
@@ -44,12 +44,12 @@ const Preview = () => {
                             ''
                         )
                     )
-                    setTransformedImage({ source: "data:;base64," + base64 });
+                    setTransformedImage({ source: "data:;base64," + base64,
+                        blob: response.data});
                 })
     }, [orignalImageId, effectTitle])
 
     const handleEffectButton = () => {
-        console.log(effectTitle)
         history.push({
             pathname: EFFECT,
             state: {

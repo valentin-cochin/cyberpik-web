@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import Dropzone from "react-dropzone"
 import { Link, useHistory } from 'react-router-dom'
+import { logout } from '../components/user_accounts/logout'
 import { axiosToken } from '../shared/axios-config'
 import { EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE, SIGN_IN } from '../shared/url-constants'
-import { logout } from '../components/user_accounts/logout'
 
 
 const Import = () => {
@@ -45,6 +45,7 @@ const Import = () => {
                         state: { imageId: response.data }
                     })
                 }).catch(err => {
+                    // TODO: trop général. Provoque problème quand on envoie un fichier trop large
                     logout()
                     history.push(SIGN_IN)
                 })
@@ -71,7 +72,7 @@ const Import = () => {
                                 accept=".jpeg,.jpg"
                                 maxFiles={1}
                                 minSize={1024}
-                                maxSize={3072000}
+                                maxSize={5242880}
                             >
                                 {({ getRootProps, getInputProps }) => (
                                     <div {...getRootProps({ style })}>
