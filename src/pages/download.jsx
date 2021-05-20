@@ -25,7 +25,6 @@ const Download = () => {
                                 <h2>Your download should begin automatically</h2>
                             </div>
                             <h3>If it doesn’t start automatically, <a href="" className="manual-down">please click here to downlaod manually.</a></h3>
-
                         </div>
                     </div>
                 </div>
