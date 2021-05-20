@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Loader from 'react-loader-spinner'
 import { useHistory, useLocation } from 'react-router-dom'
 import { axiosToken } from '../shared/axios-config'
 import { DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../shared/url-constants'
@@ -85,8 +86,13 @@ const Preview = () => {
                             <div className="overflow-hidden">{
                                 isImgReceived ?
                                     <img src={transformedImage.source} alt="transformed" style={{ maxWidth: "100%", height: "auto", maxHeight: "500px" }} />
-                                    :
-                                    <p>Processing</p>
+                                :
+                                    <Loader
+                                    type="Grid"
+                                    color="#999999"
+                                    height={200}
+                                    width={200}
+                                  />
                             }
                             </div>
                         </div>
