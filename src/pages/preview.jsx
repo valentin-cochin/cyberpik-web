@@ -4,11 +4,25 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { axiosToken } from '../shared/axios-config'
 import { DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../shared/url-constants'
 
+function dataURLtoFile(data, name) {
+    let arr = data.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], name + '.jpeg', {type: mime});
+  }
 
 const Preview = () => {
     const [effectTitle, setEffectTitle] = useState(0)
+    const [isImgNotUploaded, setIsImgNotUploaded] = useState(true)
     const [orignalImageId, setOrignalImageId] = useState(0)
-    const [transformedImage, setTransformedImage] = useState(0);
+    const [transformedImage, setTransformedImage] = useState(0)
     const location = useLocation()
     const history = useHistory()
 
@@ -45,8 +59,10 @@ const Preview = () => {
                             ''
                         )
                     )
-                    setTransformedImage({ source: "data:;base64," + base64,
-                        blob: response.data});
+                    setTransformedImage({
+                        source: "data:;base64," + base64,
+                        blob: response.data
+                    });
                 })
     }, [orignalImageId, effectTitle])
 
@@ -68,6 +84,25 @@ const Preview = () => {
         })
     }
 
+    const handleUploadButton = () => {
+        let image = dataURLtoFile(transformedImage.source, "image")
+        let formData = new FormData()
+        formData.append("file", image)
+
+        axiosToken.post("/images/", formData, {
+            headers: {
+                'Content-Type': `multipart/form-data`
+            }
+        }).then(response => {
+            console.log(response.data)
+        }).catch(err => {
+            console.log(err)
+        })
+
+        setIsImgNotUploaded(false)
+    }
+
+    console.log("isImgNotUploaded: " + isImgNotUploaded)
 
     return (
         <section className="authentication-form download">
@@ -85,14 +120,14 @@ const Preview = () => {
                             </div>
                             <div className="overflow-hidden">{
                                 isImgReceived ?
-                                    <img src={transformedImage.source} alt="transformed" style={{ maxWidth: "100%", height: "auto", maxHeight: "500px" }} />
-                                :
+                                    <img id="transformed" src={transformedImage.source} alt="transformed" style={{ maxWidth: "100%", height: "auto", maxHeight: "500px" }} />
+                                    :
                                     <Loader
-                                    type="Grid"
-                                    color="#999999"
-                                    height={200}
-                                    width={200}
-                                  />
+                                        type="Grid"
+                                        color="#999999"
+                                        height={200}
+                                        width={200}
+                                    />
                             }
                             </div>
                         </div>
@@ -111,6 +146,11 @@ const Preview = () => {
                             <div className="col-3">
                                 <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleEffectButton}><i className="fa fa-angle-double-left mr-2"></i>Effect</button>
                             </div>
+                            {isImgReceived && isImgNotUploaded &&
+                                <div className="col-3">
+                                    <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleUploadButton}><i className="fa fa-angle-double-up mr-2"></i>Save</button>
+                                </div>
+                            }
                             {isImgReceived &&
                                 <div className="col-3">
                                     <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleDownloadButton}><i className="fa fa-angle-double-right mr-2"></i>Download</button>

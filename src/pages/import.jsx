@@ -39,13 +39,12 @@ const Import = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             }).then(response => {
-                    console.log(response.data)
                     history.push({
                         pathname: EFFECT,
                         state: { imageId: response.data }
                     })
                 }).catch(err => {
-                    // TODO: trop général. Provoque problème quand on envoie un fichier trop large
+                    // TODO: erreur trop générale. Revoie sur login on envoie un fichier trop large. Innatendu pour l'utilisateur.
                     logout()
                     history.push(SIGN_IN)
                 })
