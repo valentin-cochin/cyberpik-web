@@ -1,6 +1,6 @@
 import React from 'react';
-import { HOME_PAGE } from '../../../config/url-constants';
-import { axiosToken } from '../../../config/axios-config';
+import { HOME_PAGE } from '../../shared/url-constants';
+import { axiosToken } from '../../shared/axios-config';
 import { logout } from './logout';
 
 const DeleteModal = () => {
@@ -17,7 +17,7 @@ const DeleteModal = () => {
         <div className="modal fade" id="delete" tabIndex="-1" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
-                    <div className="modal-header">
+                    <div className="modal-header justify-content-center">
                         <h5 className="modal-title">Are you sure you want to delete your account?</h5>
                     </div>
                     <div className="modal-footer justify-content-center">

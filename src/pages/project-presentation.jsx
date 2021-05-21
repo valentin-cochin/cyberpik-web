@@ -34,7 +34,7 @@ class ProjectPresentation extends React.Component {
 											<div className="blog-box">
 												<div className="overflow-hidden">
 													<a href={null}>
-														<img src="assets/images/project_presentation_header.png" alt="Project presentation" className="img-fluid" />
+														<img src="../assets/images/project_presentation_header.png" alt="Project presentation" className="img-fluid" />
 													</a>
 												</div>
 											</div>

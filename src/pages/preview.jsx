@@ -1,15 +1,33 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-import { BACK_END_URL, DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../../config/url-constants';
+import React, { useEffect, useState } from 'react'
+import Loader from 'react-loader-spinner'
+import { useHistory, useLocation } from 'react-router-dom'
+import Navbar from '../components/navbar'
+import { axiosToken } from '../shared/axios-config'
+import { DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../shared/url-constants'
 
+function dataURLtoFile(data, name) {
+    let arr = data.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], name + '.jpeg', {type: mime});
+  }
 
 const Preview = () => {
     const [effectTitle, setEffectTitle] = useState(0)
+    const [isImgNotUploaded, setIsImgNotUploaded] = useState(true)
     const [orignalImageId, setOrignalImageId] = useState(0)
-    const [transformedImage, setTransformedImage] = useState(0);
+    const [transformedImage, setTransformedImage] = useState(0)
     const location = useLocation()
     const history = useHistory()
+
+    let isImgReceived = (transformedImage !== 0)
 
     console.log("imageId from Preview view is " + orignalImageId)
 
@@ -28,27 +46,28 @@ const Preview = () => {
             console.log(orignalImageId)
             console.log(effectTitle)
         }
-    })
+    }, [location.state, history, orignalImageId, effectTitle])
 
     useEffect(() => {
-        if(orignalImageId !== null)
-        axios.get(
-          BACK_END_URL + "/images/" + orignalImageId,
-          { responseType: 'arraybuffer' },
-        )
-        .then(response => {
-          const base64 = btoa(
-            new Uint8Array(response.data).reduce(
-              (data, byte) => data + String.fromCharCode(byte),
-              ''
+        if (orignalImageId !== 0)
+            axiosToken.get("/effects/nst/" + orignalImageId + "?style=" + effectTitle,
+                { responseType: 'arraybuffer' },
             )
-          )
-          setTransformedImage({ source: "data:;base64," + base64 });
-        })
-    }, [orignalImageId])
+                .then(response => {
+                    const base64 = btoa(
+                        new Uint8Array(response.data).reduce(
+                            (data, byte) => data + String.fromCharCode(byte),
+                            ''
+                        )
+                    )
+                    setTransformedImage({
+                        source: "data:;base64," + base64,
+                        blob: response.data
+                    })
+                })
+    }, [orignalImageId, effectTitle])
 
     const handleEffectButton = () => {
-        console.log(effectTitle)
         history.push({
             pathname: EFFECT,
             state: {
@@ -61,17 +80,37 @@ const Preview = () => {
         history.push({
             pathname: DOWNLOAD,
             state: {
-                transformedImage: 0
+                transformedImage: transformedImage
             }
         })
     }
 
+    const handleUploadButton = () => {
+        let image = dataURLtoFile(transformedImage.source, "image")
+        let formData = new FormData()
+        formData.append("file", image)
+
+        axiosToken.post("/images/", formData, {
+            headers: {
+                'Content-Type': `multipart/form-data`
+            }
+        }).then(response => {
+            console.log(response.data)
+        }).catch(err => {
+            console.log(err)
+        })
+
+        setIsImgNotUploaded(false)
+    }
+
+    console.log("isImgNotUploaded: " + isImgNotUploaded)
 
     return (
         <section className="authentication-form download">
+        <Navbar/>
             <div className="innerpage-decor">
-                <div className="innerpage-circle1"><img src="assets/images/Testimonial2.png" alt="" /></div>
-                <div className="innerpage-circle2"><img src="assets/images/Testimonial1.png" alt="" /></div>
+                <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
+                <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
             </div>
             <div className="container">
                 <div className="row">
@@ -81,8 +120,17 @@ const Preview = () => {
                             <div className="col-lg-8 offset-lg-2">
                                 <h2>See the result</h2>
                             </div>
-                            <div className="overflow-hidden">
-                                <img src={transformedImage.source} alt="transformed" style={{maxWidth: "100%", height: "auto", maxHeight: "500px"}} />
+                            <div className="overflow-hidden">{
+                                isImgReceived ?
+                                    <img id="transformed" src={transformedImage.source} alt="transformed" style={{ maxWidth: "100%", height: "auto", maxHeight: "500px" }} />
+                                    :
+                                    <Loader
+                                        type="Grid"
+                                        color="#999999"
+                                        height={200}
+                                        width={200}
+                                    />
+                            }
                             </div>
                         </div>
                     </div>
@@ -100,9 +148,16 @@ const Preview = () => {
                             <div className="col-3">
                                 <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleEffectButton}><i className="fa fa-angle-double-left mr-2"></i>Effect</button>
                             </div>
-                            <div className="col-3">
-                                <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleDownloadButton}><i className="fa fa-angle-double-right mr-2"></i>Download</button>
-                            </div>
+                            {isImgReceived && isImgNotUploaded &&
+                                <div className="col-3">
+                                    <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleUploadButton}><i className="fa fa-angle-double-up mr-2"></i>Save</button>
+                                </div>
+                            }
+                            {isImgReceived &&
+                                <div className="col-3">
+                                    <button className="btn btn-custom btn-lg theme-color btn-back m-2" onClick={handleDownloadButton}><i className="fa fa-angle-double-right mr-2"></i>Download</button>
+                                </div>
+                            }
                         </div>
                     </div>
                 </footer>

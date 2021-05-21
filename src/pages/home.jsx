@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import 'react-modal-video/scss/modal-video.scss';
 import { Link } from 'react-router-dom';
 import Tilt from 'react-tilt';
-import { IMPORT } from '../../config/url-constants';
+import { IMPORT } from '../shared/url-constants';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar';
 import Subscribe from '../components/subscribe';
@@ -32,14 +32,14 @@ const Home = () => {
                             <div className="home-contain">
                                 <div className="text-white">
                                     <div className="contain">
-                                        <img src="assets/images/logo-icon-white.png" alt="Logo Cyberpik" />
+                                        <img src="../assets/images/logo-icon-white.png" alt="Logo Cyberpik" />
                                         <h4>Enter into the future!</h4>
                                         <h1 className="text-white"><span className="f-bold">C</span>yber<span className="f-bold">P</span>ik</h1>
                                         <p className="slide-cap-desc">Play with your images. Glitch them, vaporwave them, cyberpunk them</p>
                                     </div>
                                     <div className="play-button">
                                         <Link className="popup-vimeo animated-circle" to={IMPORT}>
-                                            <img src="assets/images/home2/play-button.png" alt="play-button" className="img-fluid"/>
+                                            <img src="../assets/images/home2/play-button.png" alt="play-button" className="img-fluid"/>
                                         </Link>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@ const Home = () => {
                         <div className="col-sm-7">
                             <div className="home-right">
                                 <Tilt options={{ perspective: 110, speed: 400, max: 1.2, scale: 1 }}>
-                                    <img src="assets/images/preview_transfo.jpg" className="img-fluid" alt="slider-caption" />
+                                    <img src="../assets/images/preview_transfo.jpg" className="img-fluid" alt="slider-caption" />
                                 </Tilt>
                             </div>
                         </div>

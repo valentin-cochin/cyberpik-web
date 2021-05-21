@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { axiosToken } from '../../config/axios-config';
-import { PROFILE_MANAGER, SIGN_IN } from '../../config/url-constants';
+import { axiosToken } from '../shared/axios-config';
+import { PROFILE_MANAGER, SIGN_IN } from '../shared/url-constants';
 import Navbar from '../components/navbar';
 import ArchiveModal from '../components/user_accounts/archive-modal';
 import DeleteModal from '../components/user_accounts/delete-modal';
 import { logout } from '../components/user_accounts/logout';
-import notFound from "./../../public/assets/images/CyberPik-logo.png";
+import notFound from "../assets/images/CyberPik-logo.png";
 
 const UserAccountView = () => {
 
@@ -32,12 +32,39 @@ const UserAccountView = () => {
             setName(resp.data.userName)
             setEmail(resp.data.email)
             setLocation(resp.data.location)
-            setProfilePhoto(resp.data.profilePhoto)
+            getProfilePicture(resp.data.profilePhoto)
         }).catch(err => {
-            logout()
-            history.push(SIGN_IN)
+            if(err.response.status === 401) {
+                logout()
+                history.push(SIGN_IN)
+            }else{
+                console.log(err.response);
+            }
         })
     }
+
+    const getProfilePicture = (id) => {
+        if(id !== null){
+            axiosToken
+            .get("/images/" + id.photoId, { responseType: "arraybuffer" })
+            .then((response) => {
+                const base64 = btoa(
+                new Uint8Array(response.data).reduce(
+                    (data, byte) => data + String.fromCharCode(byte),
+                    ""
+                )
+                );
+                setProfilePhoto({ source: "data:;base64," + base64 });
+            }).catch(err => {
+                if(err.response.status === 401) {
+                    logout()
+                    history.push(SIGN_IN)
+                }else{
+                    console.log(err.response);
+                }
+            })
+        }
+      };
 
 
     return (
@@ -59,15 +86,15 @@ const UserAccountView = () => {
 
             <section id="team" className="team authentication-form">
                 <div className="team-decor">
-                    <div className="team-circle1"><img src="assets/images/team1.png" alt="" /></div>
-                    <div className="team-circle2"><img src="assets/images/team3.png" alt="" /></div>
-                    <div className="team-circle3"><img src="assets/images/team.png" alt="" /></div>
+                    <div className="team-circle1"><img src="../assets/images/team1.png" alt="" /></div>
+                    <div className="team-circle2"><img src="../assets/images/team3.png" alt="" /></div>
+                    <div className="team-circle3"><img src="../assets/images/team.png" alt="" /></div>
                 </div>
 
                 <div className="review-box">
                     <div id="overlay theme-form">
                         <div className="mx-auto image mb-5">
-                            <img src={(profilePhoto === null) ? notFound : profilePhoto.photoUrl} className="image" alt="profile_picture" />
+                            <img src={(profilePhoto === null) ? notFound : profilePhoto.source} className="image" alt="profile_picture" />
                         </div>
                         <br />
                         <h2 className="mb-4">{name}</h2>

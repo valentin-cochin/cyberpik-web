@@ -1,39 +1,67 @@
-import React from 'react';
+import { Form, Formik } from "formik";
+import React, { useEffect } from "react";
+import { Email } from "./user_accounts/email";
+import { subscribeUnsubscribeInitialValues } from "../shared/initialValues";
+import { subscribeUnsubscribeValidationSchema } from "../shared/validationSchemas";
+import axios from "axios";
+import { BACK_END_URL } from "../shared/url-constants";
 
+const Subscribe = () => {
+  useEffect(() => {
+    setTimeout(function () {
+      document.querySelector(".loader-wrapper").style = "display: none";
+    }, 2000);
+  }, []);
 
-class Subscribe extends React.Component {
-   componentDidMount() {
-      setTimeout(function () {
-         document.querySelector(".loader-wrapper").style = "display: none";
-      }, 2000);
-   }
-   render() {
+  const submit = (values) => {
+    axios.post(BACK_END_URL + "/newsletters/subscribe", {
+      email: values.email
+    }).then(resp => {
+      document.getElementById(
+              "message_newsletter_email"
+            ).innerHTML = "You subscribed to the newsletter"
+    }).catch(err =>
+      document.getElementById(
+              "message_newsletter_email"
+            ).innerHTML = err.response.data
+    )
+  };
 
-      return (
-         <section>
-            <div className="container">
-               <div className="row">
-                  <div className="col-md-8 offset-md-2">
-                     <div className="footer-text">
-                        <img src="assets/images/email.png" alt="email" />
-                        <h2 className="title text-center md-margin-top">subscribe to our <span>newsletter</span></h2>
-                        <p>Receive our latest news and be the first to be notified of our new features. You can unsuscribe anytime you want.</p>
-                        <form action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda" className="footer-form needs-validation" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-                           <div className="form-group">
-                              <input type="email" className="form-control" placeholder="enter your email" name="EMAIL" id="mce-EMAIL" required="required" />
-                           </div>
-                           <div className="form-button">
-                              <button type="submit" className="btn btn-custom theme-color" id="mc-submit">send</button>
-                           </div>
-                        </form>
-                     </div>
+  return (
+    <section>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 offset-md-2">
+            <div className="footer-text">
+              <img src="../assets/images/email.png" alt="email" />
+              <h2 className="title text-center md-margin-top">
+                subscribe to our <span>newsletter</span>
+              </h2>
+              <p>
+                Receive our latest news and be the first to be notified of our
+                new features. You can unsuscribe anytime you want.
+              </p>
+              <Formik
+                initialValues={subscribeUnsubscribeInitialValues}
+                onSubmit={submit}
+                validationSchema={subscribeUnsubscribeValidationSchema}
+              >
+                <Form className="footer-form needs-validation">
+                  	<Email />
+                    <div id="message_newsletter_email"
+                    className="text-center mt-0 mb-3">
                   </div>
-               </div>
+					<div className="form-button text-center">
+						<button type="submit" className="btn btn-custom theme-color mt-2">Submit</button>
+					</div>
+                </Form>
+              </Formik>
             </div>
-         </section>
-      );
-   }
-}
-
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Subscribe;

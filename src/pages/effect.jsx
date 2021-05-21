@@ -1,12 +1,14 @@
+import $ from 'jquery';
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT, PREVIEW } from '../../config/url-constants';
 import EffectCarousel from '../components/effect-carousel';
+import Navbar from '../components/navbar';
+import { GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT, PREVIEW } from '../shared/url-constants';
 
 
 const Effect = () => {
-    const [effectTitle, setEffectTitle] = useState(0);
-    const [imageId, setImageId] = useState(0);
+    let effectTitle
+    const [imageId, setImageId] = useState(0)
     const location = useLocation()
     const history = useHistory()
 
@@ -23,7 +25,7 @@ const Effect = () => {
             setImageId(location.state.imageId)
             console.log("imageId is " + imageId)
         }
-    })
+    }, [location.state, history, imageId])
 
     const handleTransformButton = () => {
         history.push({
@@ -35,12 +37,26 @@ const Effect = () => {
         })
     }
 
+    const handleChange = (property) => {
+        let currIndex = property.item.index
+        let slides = $(property.target).find(".owl-item")
+        let currSlide = slides.eq(currIndex)
+
+        slides.css('border', 'none')
+        currSlide.css('border', 'solid')
+
+        let alt = currSlide.find("img").attr('alt')
+
+        console.log('Image current is ' + alt)
+        effectTitle = alt
+    }
 
     return (
         <section className="authentication-form download">
+            <Navbar/>
             <div className="innerpage-decor">
-                <div className="innerpage-circle1"><img src="assets/images/Testimonial2.png" alt="" /></div>
-                <div className="innerpage-circle2"><img src="assets/images/Testimonial1.png" alt="" /></div>
+                <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
+                <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
             </div>
             <div className="container">
                 <div className="row">
@@ -50,7 +66,7 @@ const Effect = () => {
                             <div className="col-lg-8 offset-lg-2">
                                 <h2>Choose the effect</h2>
                             </div>
-                            <EffectCarousel  updateEffectTitle={setEffectTitle}/>
+                            <EffectCarousel  handleChange={handleChange}/>
                         </div>
                     </div>
                 </div>
@@ -75,7 +91,7 @@ const Effect = () => {
                 </footer>
             </div>
         </section>
-    );
+    )
 }
 
 

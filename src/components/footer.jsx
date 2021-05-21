@@ -1,5 +1,5 @@
 import React from 'react';
-import { GITHUB_ANTOINE, GITHUB_VALENTIN } from '../../config/url-constants';
+import { GITHUB_ANTOINE, GITHUB_VALENTIN } from '../shared/url-constants';
 
 
 const Footer = () => {
@@ -17,7 +17,7 @@ const Footer = () => {
                                         <ul className="footer-style">
                                             <li>
                                                 <div className="footer-icon">
-                                                    <img src="assets/images/locate.png" alt="locate" />
+                                                    <img src="../assets/images/locate.png" alt="locate" />
                                                 </div>
                                                 <div className="footer-address">
                                                     <a href={null}>20 Rue du Luxembourg, 59100 Roubaix, France</a>
@@ -25,7 +25,7 @@ const Footer = () => {
                                             </li>
                                             <li>
                                                 <div className="footer-icon">
-                                                    <img src="assets/images/fotter-email.png" alt="fotter-email" />
+                                                    <img src="../assets/images/fotter-email.png" alt="fotter-email" />
                                                 </div>
                                                 <div className="footer-address">
                                                     <a href={null}>support@cyberpik.com</a>

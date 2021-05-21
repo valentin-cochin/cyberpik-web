@@ -12,8 +12,8 @@ class Contact extends React.Component {
       return (
          <section id="contact" className="contact">
             <div className="contact-decor">
-               <div className="contact-circle1"><img src="assets/images/main-banner12.png" alt="" /></div>
-               <div className="contact-circle2"><img src="assets/images/main-banner1.png" alt="" /></div>
+               <div className="contact-circle1"><img src="../assets/images/main-banner12.png" alt="" /></div>
+               <div className="contact-circle2"><img src="../assets/images/main-banner1.png" alt="" /></div>
             </div>
             <div className="container">
                <div className="row">
@@ -47,7 +47,7 @@ class Contact extends React.Component {
                   </div>
                   <div className="col-lg-4 d-medium-none-lg">
                      <div className="contact-right">
-                        <img src="assets/images/Contact-info.png" className="img-fluid" alt="" />
+                        <img src="../assets/images/Contact-info.png" className="img-fluid" alt="" />
                      </div>
                   </div>
                </div>
