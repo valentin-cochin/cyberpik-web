@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { DOWNLOAD, EFFECT, FORGET_PASSWORD, GALLERY, GENERAL_CONDITIONS, HOME_PAGE, IMPORT, PHOTO_DETAILS, PREVIEW, PROFILE, PROFILE_MANAGER, PROFILE_PICTURE, PROJECT_PRESENTATION, SIGN_IN, SIGN_UP, UNSUBSCRIBE } from './shared/url-constants';
+import { DOWNLOAD, EFFECT, FORGET_PASSWORD, GALLERY, GENERAL_CONDITIONS, HOME_PAGE, IMPORT, PHOTO_DETAILS, PREVIEW, PROFILE, PROFILE_MANAGER, PROFILE_PICTURE, PROJECT_PRESENTATION, RESET_PASSWORD, SIGN_IN, SIGN_UP, UNSUBSCRIBE } from './shared/url-constants';
 import './index.scss';
 import { default as NoMatch } from './pages/404';
 import Download from './pages/download';
@@ -21,6 +21,7 @@ import Unsubscribe from './pages/unsubscribe';
 import UserAccountModify from './pages/user-account-modify';
 import UserAccountView from './pages/user-account-view';
 import registerServiceWorker from './registerServiceWorker';
+import ResetPassword from './pages/reset-pwd';
 
 class Root extends React.Component {
     render() {
@@ -40,6 +41,7 @@ class Root extends React.Component {
                     <Route path={`${process.env.PUBLIC_URL}${PROFILE}`} component={UserAccountView} />
                     <Route path={`${process.env.PUBLIC_URL}${PROFILE_MANAGER}`} component={UserAccountModify} />
                     <Route path={`${process.env.PUBLIC_URL}${PROJECT_PRESENTATION}`} component={ProjectPresentation} />
+                    <Route path={`${process.env.PUBLIC_URL}${RESET_PASSWORD}`} component={ResetPassword} />
                     <Route path={`${process.env.PUBLIC_URL}${SIGN_IN}`} component={SignIn} />
                     <Route path={`${process.env.PUBLIC_URL}${SIGN_UP}`} component={SignUp} />
                     <Route path={`${process.env.PUBLIC_URL}${UNSUBSCRIBE}`} component={Unsubscribe} />
