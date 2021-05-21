@@ -4,8 +4,6 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { axiosToken } from '../shared/axios-config'
 import { DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../shared/url-constants'
 
-let isImgNotUploaded = true
-
 function dataURLtoFile(data, name) {
     let arr = data.split(','),
       mime = arr[0].match(/:(.*?);/)[1],
@@ -22,8 +20,9 @@ function dataURLtoFile(data, name) {
 
 const Preview = () => {
     const [effectTitle, setEffectTitle] = useState(0)
+    const [isImgNotUploaded, setIsImgNotUploaded] = useState(true)
     const [orignalImageId, setOrignalImageId] = useState(0)
-    const [transformedImage, setTransformedImage] = useState(0);
+    const [transformedImage, setTransformedImage] = useState(0)
     const location = useLocation()
     const history = useHistory()
 
@@ -86,13 +85,9 @@ const Preview = () => {
     }
 
     const handleUploadButton = () => {
-        const image = dataURLtoFile(transformedImage.source, "image")
-
+        let image = dataURLtoFile(transformedImage.source, "image")
         let formData = new FormData()
         formData.append("file", image)
-
-        console.log("Trying to save")
-        console.log(image)
 
         axiosToken.post("/images/", formData, {
             headers: {
@@ -100,13 +95,14 @@ const Preview = () => {
             }
         }).then(response => {
             console.log(response.data)
-            isImgNotUploaded = false
         }).catch(err => {
             console.log(err)
         })
 
-        isImgNotUploaded = false
+        setIsImgNotUploaded(false)
     }
+
+    console.log("isImgNotUploaded: " + isImgNotUploaded)
 
     return (
         <section className="authentication-form download">
