@@ -6,6 +6,7 @@ import DeleteModal from "../components/gallery/delete-modal";
 import ModifyModal from "../components/gallery/modify-modal";
 import Navbar from "../components/navbar";
 import { logout } from "../components/user_accounts/logout";
+import FileSaver from "file-saver";
 
 const PhotoDetails = () => {
   const location = useLocation();
@@ -13,7 +14,6 @@ const PhotoDetails = () => {
   const [imageId, setImageId] = useState(0);
   const [image, setImage] = useState({});
   const [imageTitle, setImageTitle] = useState("");
-  const [imageLocation, setImageLocation] = useState("");
 
   useEffect(() => {
     setTimeout(function () {
@@ -28,6 +28,12 @@ const PhotoDetails = () => {
       setImageId(location.state.imageId);
     }
   });
+
+  const download = () => {
+    if (image !== 0) {
+      FileSaver.saveAs(new Blob([image.blob]), "tranformed_image.jpg");
+    }
+  };
 
   useEffect(() => {
     if (imageId !== 0) {
@@ -46,7 +52,10 @@ const PhotoDetails = () => {
             ""
           )
         );
-        setImage({ source: "data:;base64," + base64 });
+        setImage({
+          source: "data:;base64," + base64,
+          blob: response.data
+        });
       })
       .catch((err) => {
         logout();
@@ -67,12 +76,13 @@ const PhotoDetails = () => {
   };
 
   const goToEffect = () => {
-  	if(imageId !== 0) {
-    history.push({
-      pathname: EFFECT,
-      state: { imageId: imageId }
-	})
-  }};
+    if (imageId !== 0) {
+      history.push({
+        pathname: EFFECT,
+        state: { imageId: imageId },
+      });
+    }
+  };
 
   return (
     <div>
@@ -134,6 +144,13 @@ const PhotoDetails = () => {
                 onClick={goToEffect}
               >
                 Add an Effect
+              </button>
+              <button
+                type="submit"
+                className="btn btn-custom theme-color ml-5 mr-5 mt-5"
+                onClick={download}
+              >
+                Download
               </button>
               <button
                 type="submit"
