@@ -63,7 +63,7 @@ const Preview = () => {
                     setTransformedImage({
                         source: "data:;base64," + base64,
                         blob: response.data
-                    });
+                    })
                 })
     }, [orignalImageId, effectTitle])
 
