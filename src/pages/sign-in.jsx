@@ -60,7 +60,6 @@ const SignIn = () => {
                      <div className="form-group row">
                         <div className="custom-control custom-checkbox col-6">
                            <input type="checkbox" className="custom-control-input" id="customControlAutosizing" />
-                           <label className="custom-control-label" htmlFor="customControlAutosizing">Remember me</label>
                         </div>
                         <a href={FORGET_PASSWORD} className="text-right col-6 theme-link">lost your password</a>
                      </div>

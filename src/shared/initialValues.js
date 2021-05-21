@@ -27,3 +27,12 @@ export const signUpInitialValues = {
  export const subscribeUnsubscribeInitialValues = {
      email: ""
  }
+
+ export const forgetPasswordInitialValues = {
+     email: ""
+ }
+
+ export const resetPasswordInitialValues = {
+    password: "",
+    confirm_password: ""
+ }
