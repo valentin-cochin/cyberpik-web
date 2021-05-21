@@ -1,6 +1,7 @@
 import FileSaver from 'file-saver';
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import Navbar from '../components/navbar';
 import { GITHUB_ANTOINE, GITHUB_VALENTIN, HOME_PAGE, IMPORT } from '../shared/url-constants';
 
 const Download = () => {
@@ -27,6 +28,7 @@ const Download = () => {
 
     return (
         <section className="authentication-form download">
+            <Navbar/>
             <div className="innerpage-decor">
                 <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
                 <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>

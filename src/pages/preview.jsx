@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Loader from 'react-loader-spinner'
 import { useHistory, useLocation } from 'react-router-dom'
+import Navbar from '../components/navbar'
 import { axiosToken } from '../shared/axios-config'
 import { DOWNLOAD, EFFECT, GITHUB_ANTOINE, GITHUB_VALENTIN, IMPORT } from '../shared/url-constants'
 
@@ -106,6 +107,7 @@ const Preview = () => {
 
     return (
         <section className="authentication-form download">
+        <Navbar/>
             <div className="innerpage-decor">
                 <div className="innerpage-circle1"><img src="../assets/images/Testimonial2.png" alt="" /></div>
                 <div className="innerpage-circle2"><img src="../assets/images/Testimonial1.png" alt="" /></div>
