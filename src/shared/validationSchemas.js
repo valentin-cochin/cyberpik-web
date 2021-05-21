@@ -31,3 +31,12 @@ export const photoDetailsModifyValidationSchema = yup.object().shape({
 export const subscribeUnsubscribeValidationSchema = yup.object().shape({
     email: yup.string().required("e-mail is required").email("e-mail is not valid")
 })
+
+export const forgetPasswordValidationSchema = yup.object().shape({
+    email: yup.string().required("e-mail is required").email("e-mail is not valid")
+})
+
+export const resetPasswordValidationSchema = yup.object().shape({
+    password: yup.string().password(),
+    confirm_password: yup.string().oneOf([yup.ref("password"), null], "passwords must be the same")
+})
